@@ -8,80 +8,87 @@
 </head>
 <body>
     <nav>
-        <div class="content-container nav-container">
-            <a href="index.html" class="logo">Cameron Ely-Murdock</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">CEM</a>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="rivr-social.html" class="active">Rivr.Social</a></li>
                 <li><a href="work.html">Work</a></li>
                 <li><a href="thinking.html">Thinking</a></li>
-                <li><a href="writing.html">Writing & Media</a></li>
-                <li><a href="working-together.html">Working Together</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="writing.html">Writing</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="content-container hero-container">
+    <header class="hero container">
+        <div class="hero-grid" style="grid-template-columns: 2fr 1fr;">
             <div class="hero-content">
-                <span class="hero-subtitle">Coordination Infrastructure</span>
-                <h1>Rivr.Social</h1>
-                <p>A platform for neighborhoods, venues, and mutual aid groups where real coordination happens.</p>
+                <div class="mono-tag">Flagship Platform</div>
+                <h1>Social<br>Infrastructure</h1>
+                <p>Rivr is a platform for neighborhoods, venues, and mutual aid groups where real coordination happens. Not a feed, but a tool.</p>
             </div>
-            <div class="hero-image"></div>
+             <div class="hero-visual">
+                <!-- Visual Placeholder -->
+                <div style="width: 100%; height: 200px; background: linear-gradient(45deg, #1a1a1a, #050505); border: 1px solid #333; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-family: 'JetBrains Mono'; color: #444;">[GRAPH_NETWORK]</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container" style="padding-bottom: 8rem;">
+        <div class="bento-grid">
+            <div class="bento-item span-12">
+                <h2>Built for Use, Not Feeds</h2>
+                <p>Rivr is designed for places where participation and trust matter more than engagement metrics. It helps communities share resources, organize labor, and build accountability.</p>
+                <div class="feature-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="feature-item">No follower economy</div>
+                    <div class="feature-item">No algorithmic manipulation</div>
+                    <div class="feature-item">Transparent history</div>
+                    <div class="feature-item">Cooperative economics</div>
+                </div>
+            </div>
+
+            <div class="bento-item span-6" style="background: #111;">
+                <h3>Local Sovereignty</h3>
+                <p>Communities own their data and their decisions. Sovereignty is the foundation of trust.</p>
+            </div>
+            <div class="bento-item span-6" style="background: #111;">
+                <h3>Human Scale</h3>
+                <p>Complexity should live in the system, not the user. We design for clarity over features.</p>
+            </div>
+            <div class="bento-item span-6" style="background: #111;">
+                <h3>Interoperability</h3>
+                <p>Systems should talk without collapsing meaning. We build for the digital commons.</p>
+            </div>
+            <div class="bento-item span-6" style="background: #111;">
+                <h3>Durability</h3>
+                <p>Tools should still make sense in ten years. We build for long-term stewardship.</p>
+            </div>
         </div>
     </section>
 
-    <section class="content-section">
-        <div class="content-container">
-            <div class="grid-2">
+    <footer class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="font-size: 2rem; border: none;">CEM</a>
+            </div>
+            <div class="footer-links">
                 <div>
-                    <h2>Built for Use, Not Feeds</h2>
-                    <p>Rivr is designed for places where participation and trust matter more than engagement metrics. It helps communities share resources, organize labor, and build accountability.</p>
-                    
-                    <h3>The Difference</h3>
                     <ul>
-                        <li>No follower economy or engagement farming</li>
-                        <li>No algorithmic manipulation</li>
-                        <li>Transparent participation history</li>
-                        <li>Cooperative economics</li>
+                        <li><a href="rivr-social.html">Rivr.Social</a></li>
+                        <li><a href="work.html">Work</a></li>
+                        <li><a href="thinking.html">Thinking</a></li>
                     </ul>
                 </div>
-                <div class="emphasis">
-                    Rivr is a response to the failure of platforms to serve the places they extract from.
+                <div>
+                    <ul>
+                        <li><a href="writing.html">Writing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="light-section">
-        <div class="content-container">
-            <h2>Design Principles</h2>
-            <div class="grid-2">
-                <div>
-                    <h3>Local Sovereignty</h3>
-                    <p>Communities own their data and their decisions. Sovereignty is the foundation of trust.</p>
-                    
-                    <h3>Human Scale</h3>
-                    <p>Complexity should live in the system, not the user. We design for clarity over features.</p>
-                </div>
-                <div>
-                    <h3>Interoperability</h3>
-                    <p>Systems should talk without collapsing meaning. We build for the digital commons.</p>
-                    
-                    <h3>Durability</h3>
-                    <p>Tools should still make sense in ten years. We build for the long-term stewardship of communities.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="content-container text-center">
-            <p>© Cameron Ely-Murdock · Rivr.Social<br>
-            Built for communities, not metrics.</p>
         </div>
     </footer>
 </body>

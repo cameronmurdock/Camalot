@@ -3,80 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cameron Ely-Murdock</title>
+    <title>Cameron Ely-Murdock | Systems Designer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav>
-        <div class="content-container nav-container">
-            <a href="index.html" class="logo">Cameron Ely-Murdock</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">CEM</a>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="rivr-social.html">Rivr.Social</a></li>
                 <li><a href="work.html">Work</a></li>
                 <li><a href="thinking.html">Thinking</a></li>
-                <li><a href="writing.html">Writing & Media</a></li>
-                <li><a href="working-together.html">Working Together</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="writing.html">Writing</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="content-container hero-container">
+    <header class="hero container">
+        <div class="hero-grid">
             <div class="hero-content">
-                <span class="hero-subtitle">Systems Designer & Founder</span>
-                <h1>And So<br>It Is...</h1>
-                <p>Building the infrastructure for local life to work again.</p>
+                <div class="mono-tag">Status: Building Infrastructure</div>
+                <h1>Protocol<br>For A New<br>World</h1>
+                <p>I design the invisible systems that help communities coordinate, govern, and thrive without extraction.</p>
             </div>
-            <div class="hero-image">
-                <!-- Image placeholder with styled background -->
+            <div class="hero-visual">
+                <!-- Abstract Technical Visual could go here -->
+                <div style="width: 100%; height: 300px; background: linear-gradient(45deg, #111, #050505); border: 1px solid #333; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                    <span style="font-family: 'JetBrains Mono'; color: #444;">[SYSTEM_VISUALIZATION]</span>
+                </div>
             </div>
         </div>
-    </section>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <h3>Founder</h3>
+                <span>Rivr.Social</span>
+            </div>
+            <div class="stat-item">
+                <h3>Focus</h3>
+                <span>Coordination Systems</span>
+            </div>
+            <div class="stat-item">
+                <h3>Base</h3>
+                <span>Boulder, CO</span>
+            </div>
+        </div>
+    </header>
 
-    <section class="content-section">
-        <div class="content-container">
-            <h2>The Mission</h2>
-            <div class="grid-2">
+    <section class="bento-section container">
+        <div class="mono-tag">The Ecosystem</div>
+        <h2 style="margin-bottom: 3rem;">Selected Works</h2>
+        
+        <div class="bento-grid">
+            <!-- Rivr.Social Card - Main Feature -->
+            <div class="bento-item span-8">
                 <div>
-                    <p>I'm Cameron Ely-Murdock — a systems designer and founder focused on real-world coordination: how people organize work, share resources, govern together, and distribute value without extraction.</p>
-                    <p>Founder of <a href="rivr-social.html">Rivr.Social</a>.</p>
-                </div>
-                <div class="emphasis">
-                    This is not social media.<br>
-                    This is social infrastructure.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="light-section">
-        <div class="content-container">
-            <h2>Focus Areas</h2>
-            
-            <p>Modern life isn't failing because people don't care. It's failing because the systems we use to coordinate are broken. I design platforms and frameworks that help communities organize without bureaucracy and collaborate without surveillance.</p>
-
-            <div class="grid-2" style="margin-top: 4rem;">
-                <div class="card">
+                    <div class="mono-tag">Flagship Project</div>
                     <h3>Rivr.Social</h3>
-                    <p>A platform for organizing local life. Reclaiming the digital commons for physical communities.</p>
-                    <a href="rivr-social.html">Explore Rivr →</a>
+                    <p>The operating system for local communities. We're replacing the feed with the graph—mapping relationships, resources, and trust.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="icon-box">01</div>
+                            <span>No algorithms, just tools.</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="icon-box">02</div>
+                            <span>Local-first architecture.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
+                <a href="rivr-social.html" class="bento-link">Explore Platform</a>
+            </div>
+
+            <!-- Philosophy Card -->
+            <div class="bento-item span-4" style="background: #0a0a0a;">
+                <div>
+                    <div class="mono-tag">Thinking</div>
+                    <h3>The Thesis</h3>
+                    <p>Modern failure is a coordination problem. We have the tech; we lack the protocol for trust.</p>
+                </div>
+                <a href="thinking.html" class="bento-link">Read Essays</a>
+            </div>
+
+            <!-- Work/Services Card -->
+            <div class="bento-item span-4">
+                <div>
+                    <div class="mono-tag">Services</div>
                     <h3>Systems Design</h3>
-                    <p>Designing the invisible threads that hold communities together—from governance to distribution.</p>
-                    <a href="work.html">View Work →</a>
+                    <p>Architecting governance, tokenomics, and social graphs for organizations.</p>
                 </div>
+                <a href="work.html" class="bento-link">View Capabilities</a>
+            </div>
+
+            <!-- Contact/About Card -->
+            <div class="bento-item span-8" style="background: #111;">
+                <div>
+                    <div class="mono-tag">Bio</div>
+                    <h3>About Cameron</h3>
+                    <p>From venue operations to ontology design. I build things that work in the real world.</p>
+                </div>
+                <a href="about.html" class="bento-link">Full Profile</a>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="content-container text-center">
-            <p>© Cameron Ely-Murdock · Rivr.Social<br>
-            Built for communities, not metrics.</p>
+    <footer class="container">
+        <div class="footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="font-size: 2rem; border: none;">CEM</a>
+                <p style="margin-top: 1rem;">Building the infrastructure for local life.</p>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <ul>
+                        <li><a href="rivr-social.html">Rivr.Social</a></li>
+                        <li><a href="work.html">Work</a></li>
+                        <li><a href="thinking.html">Thinking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li><a href="writing.html">Writing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="https://github.com/cameronmurdock">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
 </body>
