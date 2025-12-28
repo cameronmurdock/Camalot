@@ -25,11 +25,14 @@
         }
         .essay-subtitle {
             font-family: var(--font-body);
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
             display: block;
             line-height: 1.4;
+            font-style: italic;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -91,9 +94,15 @@
                         substackData.items.forEach(item => {
                             if (item.title.toLowerCase().includes('coming soon')) return;
 
-                            let subtitle = stripHtml(item.description || item.content || '');
+                            // Substack RSS description usually contains the subtitle/summary
+                            let rawSubtitle = item.description || item.content || '';
+                            let subtitle = stripHtml(rawSubtitle);
+                            
+                            // Remove the "By Cameron..." line that Substack often injects at the start
                             subtitle = subtitle.replace(/^By .*? · .*? min read/, '').trim();
-                            subtitle = subtitle.substring(0, 200);
+                            
+                            // If the subtitle is just a repetition of the title, or too short, try to get a better chunk
+                            if (subtitle.length < 5) subtitle = ''; 
 
                             allItems.push({
                                 title: item.title,
@@ -101,7 +110,7 @@
                                 date: new Date(item.pubDate),
                                 type: 'Essay',
                                 subtitle: subtitle,
-                                desc: 'Read on Substack'
+                                desc: 'Read full essay on Substack'
                             });
                         });
                     }
