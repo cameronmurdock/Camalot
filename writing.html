@@ -50,6 +50,53 @@
         </div>
     </section>
 
+    <style>
+        .video-container {
+            margin-top: 2rem;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 4px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .essay-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: block;
+            line-height: 1.4;
+        }
+    </style>
+
+    <section>
+        <div class="container">
+            <p style="margin-bottom: 3rem;">Most of what I publish is slow. When something is ready, it goes here. If you want updates, <a href="https://camalot999.substack.com/" target="_blank" style="text-decoration: underline;">subscribe on Substack</a>.</p>
+
+            <div class="work-list" id="combined-feed">
+                <!-- Dynamic content will load here -->
+                <div class="work-item">
+                    <a href="#">
+                        <span class="work-meta">Syncing</span>
+                        <div>
+                            <div class="work-title">Fetching latest content...</div>
+                            <div class="work-desc">Connecting to Substack and YouTube...</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Add timestamp to bypass caching (cache busting)
@@ -68,24 +115,28 @@
 
                     if (substackData.status === 'ok') {
                         substackData.items.forEach(item => {
+                            // Substack puts the subtitle in the description
                             allItems.push({
                                 title: item.title,
                                 link: item.link,
                                 date: new Date(item.pubDate),
                                 type: 'Essay',
-                                desc: stripHtml(item.description).substring(0, 160) + '...'
+                                subtitle: stripHtml(item.description),
+                                desc: 'Read on Substack'
                             });
                         });
                     }
 
                     if (youtubeData.status === 'ok') {
                         youtubeData.items.forEach(item => {
+                            const videoId = extractVideoId(item.link);
                             allItems.push({
                                 title: item.title,
                                 link: item.link,
                                 date: new Date(item.pubDate),
                                 type: 'Video',
-                                desc: 'Published on YouTube'
+                                videoId: videoId,
+                                desc: 'Watch on YouTube'
                             });
                         });
                     }
@@ -99,16 +150,36 @@
                             const dateStr = item.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
                             const div = document.createElement('div');
                             div.className = 'work-item';
-                            div.innerHTML = `
-                                <a href="${item.link}" target="_blank">
-                                    <span class="work-meta">${item.type}</span>
-                                    <div>
-                                        <div class="work-title">${item.title}</div>
-                                        <div class="work-desc">${item.desc}</div>
-                                        <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.5; font-family: var(--font-body);">${dateStr}</div>
+                            
+                            let contentHtml = '';
+                            if (item.type === 'Essay') {
+                                contentHtml = `
+                                    <a href="${item.link}" target="_blank">
+                                        <span class="work-meta">${item.type}</span>
+                                        <div>
+                                            <div class="work-title">${item.title}</div>
+                                            <span class="essay-subtitle">${item.subtitle}</span>
+                                            <div class="work-desc">${item.desc}</div>
+                                            <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.5; font-family: var(--font-body);">${dateStr}</div>
+                                        </div>
+                                    </a>
+                                `;
+                            } else {
+                                contentHtml = `
+                                    <div style="cursor: default;">
+                                        <span class="work-meta">${item.type}</span>
+                                        <div>
+                                            <div class="work-title">${item.title}</div>
+                                            <div class="video-container">
+                                                <iframe src="https://www.youtube.com/embed/${item.videoId}" allowfullscreen></iframe>
+                                            </div>
+                                            <div style="font-size: 0.8rem; margin-top: 1rem; opacity: 0.5; font-family: var(--font-body);">${dateStr}</div>
+                                        </div>
                                     </div>
-                                </a>
-                            `;
+                                `;
+                            }
+                            
+                            div.innerHTML = contentHtml;
                             container.appendChild(div);
                         });
                     } else {
@@ -124,6 +195,12 @@
                 const tmp = document.createElement("DIV");
                 tmp.innerHTML = html;
                 return tmp.textContent || tmp.innerText || "";
+            }
+
+            function extractVideoId(url) {
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                const match = url.match(regExp);
+                return (match && match[2].length === 11) ? match[2] : null;
             }
         });
     </script>
