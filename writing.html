@@ -94,11 +94,8 @@
                         substackData.items.forEach(item => {
                             if (item.title.toLowerCase().includes('coming soon')) return;
 
-                            // Simplified: Just grab the description, but hide it if it's the Substack filler
+                            // Direct extraction: Substack maps 'Subtitle' to 'description' in the RSS feed
                             let subtitle = stripHtml(item.description || '');
-                            if (subtitle.toLowerCase().includes("thanks for reading")) {
-                                subtitle = ""; // Don't show the subtitle if it's just Substack filler
-                            }
 
                             allItems.push({
                                 title: item.title,
