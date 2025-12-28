@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writing | Cameron Ely-Murdock</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .video-container {
+            margin-top: 2rem;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 4px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .essay-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: block;
+            line-height: 1.4;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -33,65 +60,15 @@
 
     <section>
         <div class="container">
-            <p style="margin-bottom: 3rem;">Most of what I publish is slow. When something is ready, it goes here. If you want updates, <a href="https://camalot999.substack.com/" target="_blank" style="text-decoration: underline;">subscribe on Substack</a>.</p>
-
             <div class="work-list" id="combined-feed">
                 <!-- Dynamic content will load here -->
                 <div class="work-item">
-                    <a href="#">
+                    <div style="opacity: 0.5;">
                         <span class="work-meta">Syncing</span>
                         <div>
-                            <div class="work-title">Fetching latest content...</div>
-                            <div class="work-desc">Connecting to Substack and YouTube...</div>
+                            <div class="work-title">Updating...</div>
                         </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        .video-container {
-            margin-top: 2rem;
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-            background: #000;
-            border-radius: 4px;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        .essay-subtitle {
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            display: block;
-            line-height: 1.4;
-        }
-    </style>
-
-    <section>
-        <div class="container">
-            <p style="margin-bottom: 3rem;">Most of what I publish is slow. When something is ready, it goes here. If you want updates, <a href="https://camalot999.substack.com/" target="_blank" style="text-decoration: underline;">subscribe on Substack</a>.</p>
-
-            <div class="work-list" id="combined-feed">
-                <!-- Dynamic content will load here -->
-                <div class="work-item">
-                    <a href="#">
-                        <span class="work-meta">Syncing</span>
-                        <div>
-                            <div class="work-title">Fetching latest content...</div>
-                            <div class="work-desc">Connecting to Substack and YouTube...</div>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -99,14 +76,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Add timestamp to bypass caching (cache busting)
             const now = new Date().getTime();
             const substackFeed = `https://camalot999.substack.com/feed?t=${now}`;
             const youtubeFeed = `https://www.youtube.com/feeds/videos.xml?channel_id=UCQEKGBSvt-Q_k0O4Z7Gwn-g&t=${now}`;
             
             const container = document.getElementById('combined-feed');
-
-            // Helper to get JSON via rss2json with cache busting param
             const getFeed = (url) => fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&_=${now}`).then(r => r.json());
 
             Promise.all([getFeed(substackFeed), getFeed(youtubeFeed)])
@@ -115,12 +89,10 @@
 
                     if (substackData.status === 'ok') {
                         substackData.items.forEach(item => {
-                            // Filter out "Coming soon" if it's still in Substack's cache
                             if (item.title.toLowerCase().includes('coming soon')) return;
 
-                            // Extract a clean subtitle from description or content
                             let subtitle = stripHtml(item.description || item.content || '');
-                            subtitle = subtitle.replace(/^By .*? · .*? min read/, '').trim(); // Remove Substack meta if present
+                            subtitle = subtitle.replace(/^By .*? · .*? min read/, '').trim();
                             subtitle = subtitle.substring(0, 200);
 
                             allItems.push({
@@ -150,7 +122,6 @@
                         });
                     }
 
-                    // Sort combined items by date descending
                     allItems.sort((a, b) => b.date - a.date);
 
                     if (allItems.length > 0) {
@@ -160,9 +131,8 @@
                             const div = document.createElement('div');
                             div.className = 'work-item';
                             
-                            let contentHtml = '';
                             if (item.type === 'Essay') {
-                                contentHtml = `
+                                div.innerHTML = `
                                     <a href="${item.link}" target="_blank">
                                         <span class="work-meta">${item.type}</span>
                                         <div>
@@ -174,7 +144,7 @@
                                     </a>
                                 `;
                             } else {
-                                contentHtml = `
+                                div.innerHTML = `
                                     <div style="cursor: default;">
                                         <span class="work-meta">${item.type}</span>
                                         <div>
@@ -187,8 +157,6 @@
                                     </div>
                                 `;
                             }
-                            
-                            div.innerHTML = contentHtml;
                             container.appendChild(div);
                         });
                     } else {
@@ -197,7 +165,7 @@
                 })
                 .catch(err => {
                     console.error('Feed error:', err);
-                    container.innerHTML = '<p>Error loading feeds. Please check back later.</p>';
+                    container.innerHTML = '<p>Error loading feeds.</p>';
                 });
 
             function stripHtml(html) {
@@ -207,7 +175,6 @@
             }
 
             function extractVideoId(url) {
-                // Regex updated to handle /shorts/, watch?v=, youtu.be, etc.
                 const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(\&v=)|(shorts\/))([^#\&\?]*).*/;
                 const match = url.match(regExp);
                 return (match && match[9].length === 11) ? match[9] : null;
