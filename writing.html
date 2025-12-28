@@ -24,7 +24,7 @@
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-subtitle">Writing</span>
+                <span class="hero-subtitle">Writing & Media</span>
                 <h1>Ideas Under<br>Pressure</h1>
                 <p style="font-size: 1.5rem; color: #fff; opacity: 0.9;">Longer pieces on design, coordination, incentives, locality, and the practical limits of software.</p>
             </div>
@@ -35,15 +35,14 @@
         <div class="container">
             <p style="margin-bottom: 3rem;">Most of what I publish is slow. When something is ready, it goes here. If you want updates, <a href="https://camalot999.substack.com/" target="_blank" style="text-decoration: underline;">subscribe on Substack</a>.</p>
 
-            <!-- Container for dynamic posts -->
-            <div class="work-list" id="substack-feed">
-                <!-- Loading state / Fallback -->
+            <div class="work-list" id="combined-feed">
+                <!-- Dynamic content will load here -->
                 <div class="work-item">
-                    <a href="https://camalot999.substack.com/" target="_blank">
-                        <span class="work-meta">Substack</span>
+                    <a href="#">
+                        <span class="work-meta">Syncing</span>
                         <div>
-                            <div class="work-title">Loading latest posts...</div>
-                            <div class="work-desc">Fetching directly from Camalot999...</div>
+                            <div class="work-title">Fetching latest content...</div>
+                            <div class="work-desc">Connecting to Substack and YouTube...</div>
                         </div>
                     </a>
                 </div>
@@ -51,78 +50,79 @@
         </div>
     </section>
 
-    <!-- Script to fetch Substack RSS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const feedUrl = 'https://camalot999.substack.com/feed';
-            // Use rss2json to bridge CORS restrictions for client-side fetching
-            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
-            const container = document.getElementById('substack-feed');
+            const substackFeed = 'https://camalot999.substack.com/feed';
+            const youtubeFeed = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCQEKGBSvt-Q_k0O4Z7Gwn-g';
+            
+            const container = document.getElementById('combined-feed');
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'ok' && data.items.length > 0) {
-                        container.innerHTML = ''; // Clear loading state
-                        
-                        data.items.forEach(item => {
-                            // Create the work-item structure
-                            const workItem = document.createElement('div');
-                            workItem.className = 'work-item';
-                            
-                            // Clean up description (remove HTML tags, limit length)
-                            // Create a temporary element to strip HTML entities safely
-                            const tempDiv = document.createElement("div");
-                            tempDiv.innerHTML = item.description;
-                            const textContent = tempDiv.textContent || tempDiv.innerText || "";
-                            const cleanDesc = textContent.substring(0, 180) + (textContent.length > 180 ? '...' : '');
+            // Helper to get JSON via rss2json
+            const getFeed = (url) => fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`).then(r => r.json());
 
-                            // Format Date (e.g., "Oct 2025")
-                            const dateObj = new Date(item.pubDate);
-                            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+            Promise.all([getFeed(substackFeed), getFeed(youtubeFeed)])
+                .then(([substackData, youtubeData]) => {
+                    let allItems = [];
 
-                            workItem.innerHTML = `
+                    if (substackData.status === 'ok') {
+                        substackData.items.forEach(item => {
+                            allItems.push({
+                                title: item.title,
+                                link: item.link,
+                                date: new Date(item.pubDate),
+                                type: 'Essay',
+                                desc: stripHtml(item.description).substring(0, 160) + '...'
+                            });
+                        });
+                    }
+
+                    if (youtubeData.status === 'ok') {
+                        youtubeData.items.forEach(item => {
+                            allItems.push({
+                                title: item.title,
+                                link: item.link,
+                                date: new Date(item.pubDate),
+                                type: 'Video',
+                                desc: 'Published on YouTube'
+                            });
+                        });
+                    }
+
+                    // Sort combined items by date descending
+                    allItems.sort((a, b) => b.date - a.date);
+
+                    if (allItems.length > 0) {
+                        container.innerHTML = '';
+                        allItems.forEach(item => {
+                            const dateStr = item.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                            const div = document.createElement('div');
+                            div.className = 'work-item';
+                            div.innerHTML = `
                                 <a href="${item.link}" target="_blank">
-                                    <span class="work-meta">Essay</span>
+                                    <span class="work-meta">${item.type}</span>
                                     <div>
                                         <div class="work-title">${item.title}</div>
-                                        <div class="work-desc">${cleanDesc}</div>
+                                        <div class="work-desc">${item.desc}</div>
                                         <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.5; font-family: var(--font-body);">${dateStr}</div>
                                     </div>
                                 </a>
                             `;
-                            container.appendChild(workItem);
+                            container.appendChild(div);
                         });
                     } else {
-                        // Handle empty feed or error
-                        container.innerHTML = `
-                            <div class="work-item">
-                                <a href="https://camalot999.substack.com/" target="_blank">
-                                    <span class="work-meta">Archive</span>
-                                    <div>
-                                        <div class="work-title">View Archive</div>
-                                        <div class="work-desc">Read all posts on Substack.</div>
-                                    </div>
-                                </a>
-                            </div>
-                        `;
+                        container.innerHTML = '<p>No content found.</p>';
                     }
                 })
                 .catch(err => {
-                    console.error('Error loading Substack feed', err);
-                    // Fallback to static link
-                    container.innerHTML = `
-                        <div class="work-item">
-                            <a href="https://camalot999.substack.com/" target="_blank">
-                                <span class="work-meta">Substack</span>
-                                <div>
-                                    <div class="work-title">Visit Substack</div>
-                                    <div class="work-desc">Click here to read the latest essays and updates.</div>
-                                </div>
-                            </a>
-                        </div>
-                    `;
+                    console.error('Feed error:', err);
+                    container.innerHTML = '<p>Error loading feeds. Please check back later.</p>';
                 });
+
+            function stripHtml(html) {
+                const tmp = document.createElement("DIV");
+                tmp.innerHTML = html;
+                return tmp.textContent || tmp.innerText || "";
+            }
         });
     </script>
 
@@ -131,7 +131,7 @@
             <div class="editorial-grid">
                 <div>
                     <div class="logo" style="font-size: 1rem;">Boulder, CO</div>
-                    <a href="mailto:your.email@example.com" style="display: block; margin-top: 0.5rem;">your.email@example.com</a>
+                    <a href="mailto:hello@rivr.social" style="display: block; margin-top: 0.5rem;">hello@rivr.social</a>
                 </div>
                 <div style="display: flex; gap: 2rem;">
                     <a href="contact.html">Contact</a>
