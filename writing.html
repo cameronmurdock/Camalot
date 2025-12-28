@@ -92,20 +92,38 @@
 
                     if (substackData.status === 'ok') {
                         substackData.items.forEach(item => {
-                            if (item.title.toLowerCase().includes('coming soon')) return;
+                            const title = item.title || '';
+                            if (title.toLowerCase().includes('coming soon')) return;
 
-                            // Substack RSS description usually contains the subtitle/summary
-                            let rawSubtitle = item.description || item.content || '';
-                            let subtitle = stripHtml(rawSubtitle);
+                            // Substack subtitle extraction
+                            // Try description (summary), then content
+                            let subtitle = '';
+                            const rawDesc = item.description || '';
+                            const rawContent = item.content || '';
                             
-                            // Remove the "By Cameron..." line that Substack often injects at the start
-                            subtitle = subtitle.replace(/^By .*? · .*? min read/, '').trim();
+                            // 1. Try description first
+                            subtitle = stripHtml(rawDesc);
                             
-                            // If the subtitle is just a repetition of the title, or too short, try to get a better chunk
-                            if (subtitle.length < 5) subtitle = ''; 
+                            // 2. If description is too short or just repeats the title, try content
+                            if (subtitle.length < 10 || subtitle === title) {
+                                subtitle = stripHtml(rawContent);
+                            }
+
+                            // 3. Clean up Substack's auto-injected author line
+                            subtitle = subtitle.replace(/^By .*? · \d+ min read/, '');
+                            subtitle = subtitle.replace(/^By .*? · .*? min read/, '');
+                            subtitle = subtitle.trim();
+
+                            // 4. Final check: if it's still just the title, clear it
+                            if (subtitle === title) subtitle = '';
+
+                            // 5. Truncate to a reasonable length
+                            if (subtitle.length > 250) {
+                                subtitle = subtitle.substring(0, 250) + '...';
+                            }
 
                             allItems.push({
-                                title: item.title,
+                                title: title,
                                 link: item.link,
                                 date: new Date(item.pubDate),
                                 type: 'Essay',
