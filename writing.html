@@ -64,7 +64,6 @@
     <section>
         <div class="container">
             <div class="work-list" id="combined-feed">
-                <!-- Dynamic content will load here -->
                 <div class="work-item">
                     <div style="opacity: 0.5;">
                         <span class="work-meta">Syncing</span>
@@ -94,7 +93,8 @@
                         substackData.items.forEach(item => {
                             if (item.title.toLowerCase().includes('coming soon')) return;
 
-                            // Direct extraction: Substack maps 'Subtitle' to 'description' in the RSS feed
+                            // Substack puts the Subtitle in the 'description' field of the RSS feed.
+                            // We grab it directly.
                             let subtitle = stripHtml(item.description || '');
 
                             allItems.push({
@@ -139,7 +139,7 @@
                                         <span class="work-meta">${item.type}</span>
                                         <div>
                                             <div class="work-title">${item.title}</div>
-                                            <span class="essay-subtitle">${item.subtitle}</span>
+                                            ${item.subtitle ? `<span class="essay-subtitle">${item.subtitle}</span>` : ''}
                                             <div class="work-desc">${item.desc}</div>
                                             <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.5; font-family: var(--font-body);">${dateStr}</div>
                                         </div>
