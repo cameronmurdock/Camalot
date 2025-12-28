@@ -33,39 +33,98 @@
 
     <section>
         <div class="container">
-            <p style="margin-bottom: 3rem;">Most of what I publish is slow. When something is ready, it goes here. If you want updates, email is the best channel.</p>
+            <p style="margin-bottom: 3rem;">Most of what I publish is slow. When something is ready, it goes here. If you want updates, <a href="https://camalot999.substack.com/" target="_blank" style="text-decoration: underline;">subscribe on Substack</a>.</p>
 
-            <div class="work-list">
+            <!-- Container for dynamic posts -->
+            <div class="work-list" id="substack-feed">
+                <!-- Loading state / Fallback -->
                 <div class="work-item">
-                    <a href="#">
-                        <span class="work-meta">Essay</span>
+                    <a href="https://camalot999.substack.com/" target="_blank">
+                        <span class="work-meta">Substack</span>
                         <div>
-                            <div class="work-title">Notes on Coordination</div>
-                            <div class="work-desc">A working series on why groups stall—and what structural changes reliably help.</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="work-item">
-                    <a href="#">
-                        <span class="work-meta">Talk</span>
-                        <div>
-                            <div class="work-title">Systems Design for Real Communities</div>
-                            <div class="work-desc">A talk format I use to explain object models, workflows, and incentives without turning it into theory.</div>
-                        </div>
-                    </a>
-                </div>
-                <div class="work-item">
-                    <a href="#">
-                        <span class="work-meta">Conversation</span>
-                        <div>
-                            <div class="work-title">Building for the Commons</div>
-                            <div class="work-desc">Interviews and recorded dialogue about infrastructure, governance, and non-extractive platforms.</div>
+                            <div class="work-title">Loading latest posts...</div>
+                            <div class="work-desc">Fetching directly from Camalot999...</div>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Script to fetch Substack RSS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const feedUrl = 'https://camalot999.substack.com/feed';
+            // Use rss2json to bridge CORS restrictions for client-side fetching
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+            const container = document.getElementById('substack-feed');
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'ok' && data.items.length > 0) {
+                        container.innerHTML = ''; // Clear loading state
+                        
+                        data.items.forEach(item => {
+                            // Create the work-item structure
+                            const workItem = document.createElement('div');
+                            workItem.className = 'work-item';
+                            
+                            // Clean up description (remove HTML tags, limit length)
+                            // Create a temporary element to strip HTML entities safely
+                            const tempDiv = document.createElement("div");
+                            tempDiv.innerHTML = item.description;
+                            const textContent = tempDiv.textContent || tempDiv.innerText || "";
+                            const cleanDesc = textContent.substring(0, 180) + (textContent.length > 180 ? '...' : '');
+
+                            // Format Date (e.g., "Oct 2025")
+                            const dateObj = new Date(item.pubDate);
+                            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+                            workItem.innerHTML = `
+                                <a href="${item.link}" target="_blank">
+                                    <span class="work-meta">Essay</span>
+                                    <div>
+                                        <div class="work-title">${item.title}</div>
+                                        <div class="work-desc">${cleanDesc}</div>
+                                        <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.5; font-family: var(--font-body);">${dateStr}</div>
+                                    </div>
+                                </a>
+                            `;
+                            container.appendChild(workItem);
+                        });
+                    } else {
+                        // Handle empty feed or error
+                        container.innerHTML = `
+                            <div class="work-item">
+                                <a href="https://camalot999.substack.com/" target="_blank">
+                                    <span class="work-meta">Archive</span>
+                                    <div>
+                                        <div class="work-title">View Archive</div>
+                                        <div class="work-desc">Read all posts on Substack.</div>
+                                    </div>
+                                </a>
+                            </div>
+                        `;
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading Substack feed', err);
+                    // Fallback to static link
+                    container.innerHTML = `
+                        <div class="work-item">
+                            <a href="https://camalot999.substack.com/" target="_blank">
+                                <span class="work-meta">Substack</span>
+                                <div>
+                                    <div class="work-title">Visit Substack</div>
+                                    <div class="work-desc">Click here to read the latest essays and updates.</div>
+                                </div>
+                            </a>
+                        </div>
+                    `;
+                });
+        });
+    </script>
 
     <footer>
         <div class="container">
