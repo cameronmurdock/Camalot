@@ -92,52 +92,16 @@
 
                     if (substackData.status === 'ok') {
                         substackData.items.forEach(item => {
-                            const title = item.title || '';
-                            if (title.toLowerCase().includes('coming soon')) return;
+                            if (item.title.toLowerCase().includes('coming soon')) return;
 
-                            // Substack subtitle extraction
-                            // Try description (summary), then content
-                            let subtitle = '';
-                            const rawDesc = item.description || '';
-                            const rawContent = item.content || '';
-                            
-                            // 1. Try description first
-                            let cleanDesc = stripHtml(rawDesc);
-                            
-                            // 2. Ignore generic Substack boilerplate
-                            const boilerplate = [
-                                "thanks for reading cameron's substack",
-                                "subscribe for free to receive new posts",
-                                "this is cameron's substack"
-                            ];
-                            
-                            const isGeneric = boilerplate.some(phrase => cleanDesc.toLowerCase().includes(phrase));
-                            
-                            if (isGeneric || cleanDesc.length < 10 || cleanDesc === title) {
-                                // If description is generic or missing, pull from main content
-                                // We look for the first real paragraph after stripping widgets
-                                let bodyText = stripHtml(rawContent);
-                                bodyText = bodyText.replace(/Subscribe.*?support my work\./gi, '');
-                                bodyText = bodyText.replace(/By .*? · \d+ min read/gi, '');
-                                subtitle = bodyText.trim();
-                            } else {
-                                subtitle = cleanDesc;
-                            }
-
-                            // 3. Final cleanup of common artifacts
-                            subtitle = subtitle.replace(/^By .*? · .*? min read/, '');
-                            subtitle = subtitle.trim();
-
-                            // 4. Final check: if it's still just the title, clear it
-                            if (subtitle === title) subtitle = '';
-
-                            // 5. Truncate to a reasonable length
-                            if (subtitle.length > 250) {
-                                subtitle = subtitle.substring(0, 250) + '...';
+                            // Simplified: Just grab the description, but hide it if it's the Substack filler
+                            let subtitle = stripHtml(item.description || '');
+                            if (subtitle.toLowerCase().includes("thanks for reading")) {
+                                subtitle = ""; // Don't show the subtitle if it's just Substack filler
                             }
 
                             allItems.push({
-                                title: title,
+                                title: item.title,
                                 link: item.link,
                                 date: new Date(item.pubDate),
                                 type: 'Essay',
