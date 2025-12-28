@@ -79,65 +79,112 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const now = new Date().getTime();
-            // Use allorigins proxy to get raw XML and bypass rss2json's aggressive cache
-            const substackFeed = `https://api.allorigins.win/get?url=${encodeURIComponent('https://camalot999.substack.com/feed')}?t=${now}`;
-            const youtubeFeed = `https://www.youtube.com/feeds/videos.xml?channel_id=UCQEKGBSvt-Q_k0O4Z7Gwn-g&t=${now}`;
+            const substackUrl = 'https://camalot999.substack.com/feed';
+            const youtubeUrl = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCQEKGBSvt-Q_k0O4Z7Gwn-g';
             
+            // Using a different proxy approach for better reliability
+            // We'll try to fetch each individually so one failure doesn't block the other
             const container = document.getElementById('combined-feed');
+
+            async function fetchFeed(url, type) {
+                try {
+                    // Try AllOrigins first with a cache buster inside the target URL
+                    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url + '?t=' + now)}`;
+                    const response = await fetch(proxyUrl);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    const data = await response.json();
+                    if (!data.contents) throw new Error('No contents found in proxy response');
+                    return parseRSS(data.contents, type);
+                } catch (err) {
+                    console.error(`Error fetching ${type} feed:`, err);
+                    return []; // Return empty array on failure
+                }
+            }
 
             // Helper to parse XML to an array of objects
             function parseRSS(xmlText, type) {
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+                
+                // Check for parsing errors
+                const parserError = xmlDoc.getElementsByTagName("parsererror");
+                if (parserError.length > 0) {
+                    console.error(`XML parsing error for ${type} feed`);
+                    return [];
+                }
+
                 const items = [];
                 
                 if (type === 'Essay') {
                     const xmlItems = xmlDoc.querySelectorAll("item");
                     xmlItems.forEach(item => {
-                        const title = item.querySelector("title").textContent;
-                        if (title.toLowerCase().includes('coming soon')) return;
+                        try {
+                            const titleEl = item.querySelector("title");
+                            if (!titleEl) return;
+                            const title = titleEl.textContent;
+                            if (title.toLowerCase().includes('coming soon')) return;
 
-                        items.push({
-                            title: title,
-                            link: item.querySelector("link").textContent,
-                            date: new Date(item.querySelector("pubDate").textContent),
-                            type: 'Essay',
-                            // In Substack RSS, the subtitle is in the <description> tag
-                            subtitle: item.querySelector("description") ? item.querySelector("description").textContent : '',
-                            desc: 'Read full essay on Substack'
-                        });
+                            const linkEl = item.querySelector("link");
+                            const pubDateEl = item.querySelector("pubDate");
+                            const descEl = item.querySelector("description");
+
+                            items.push({
+                                title: title,
+                                link: linkEl ? linkEl.textContent : '#',
+                                date: pubDateEl ? new Date(pubDateEl.textContent) : new Date(),
+                                type: 'Essay',
+                                subtitle: descEl ? descEl.textContent : '',
+                                desc: 'Read full essay on Substack'
+                            });
+                        } catch (e) {
+                            console.error('Error parsing essay item', e);
+                        }
                     });
                 } else if (type === 'Video') {
                     const entries = xmlDoc.querySelectorAll("entry");
                     entries.forEach(entry => {
-                        const link = entry.querySelector("link").getAttribute("href");
-                        const videoId = extractVideoId(link);
-                        if (videoId) {
-                            items.push({
-                                title: entry.querySelector("title").textContent,
-                                link: link,
-                                date: new Date(entry.querySelector("published").textContent),
-                                type: 'Video',
-                                videoId: videoId,
-                                desc: 'Watch on YouTube'
-                            });
+                        try {
+                            const linkEl = entry.querySelector("link");
+                            if (!linkEl) return;
+                            const link = linkEl.getAttribute("href");
+                            const videoId = extractVideoId(link);
+                            
+                            const titleEl = entry.querySelector("title");
+                            const pubEl = entry.querySelector("published");
+
+                            if (videoId && titleEl) {
+                                items.push({
+                                    title: titleEl.textContent,
+                                    link: link,
+                                    date: pubEl ? new Date(pubEl.textContent) : new Date(),
+                                    type: 'Video',
+                                    videoId: videoId,
+                                    desc: 'Watch on YouTube'
+                                });
+                            }
+                        } catch (e) {
+                            console.error('Error parsing video entry', e);
                         }
                     });
                 }
                 return items;
             }
 
-            Promise.all([
-                fetch(substackFeed).then(r => r.json()).then(data => parseRSS(data.contents, 'Essay')),
-                fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(youtubeFeed)}`).then(r => r.json()).then(data => parseRSS(data.contents, 'Video'))
-            ])
-            .then(([substackItems, youtubeItems]) => {
-                const allItems = [...substackItems, ...youtubeItems];
-                allItems.sort((a, b) => b.date - a.date);
+            async function loadAllFeeds() {
+                const [substackItems, youtubeItems] = await Promise.all([
+                    fetchFeed(substackUrl, 'Essay'),
+                    fetchFeed(youtubeUrl, 'Video')
+                ]);
 
-                if (allItems.length > 0) {
+                const allItems = [...substackItems, ...youtubeItems];
+                
+                // Remove items with invalid dates
+                const validItems = allItems.filter(item => !isNaN(item.date.getTime()));
+                validItems.sort((a, b) => b.date - a.date);
+
+                if (validItems.length > 0) {
                     container.innerHTML = '';
-                    allItems.forEach(item => {
+                    validItems.forEach(item => {
                         const dateStr = item.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
                         const div = document.createElement('div');
                         div.className = 'work-item';
@@ -148,7 +195,7 @@
                                     <span class="work-meta">${item.type}</span>
                                     <div>
                                         <div class="work-title">${item.title}</div>
-                                        ${item.subtitle ? `<span class="essay-subtitle">${item.subtitle}</span>` : ''}
+                                        ${item.subtitle ? `<span class="essay-subtitle">${stripHtml(item.subtitle)}</span>` : ''}
                                         <div class="work-desc">${item.desc}</div>
                                         <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.5; font-family: var(--font-body);">${dateStr}</div>
                                     </div>
@@ -171,13 +218,17 @@
                         container.appendChild(div);
                     });
                 } else {
-                    container.innerHTML = '<p>No content found.</p>';
+                    container.innerHTML = '<p style="opacity: 0.5;">No content found at the moment.</p>';
                 }
-            })
-            .catch(err => {
-                console.error('Feed error:', err);
-                container.innerHTML = '<p>Error loading feeds.</p>';
-            });
+            }
+
+            loadAllFeeds();
+
+            function stripHtml(html) {
+                const tmp = document.createElement("DIV");
+                tmp.innerHTML = html;
+                return tmp.textContent || tmp.innerText || "";
+            }
 
             function extractVideoId(url) {
                 const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(\&v=)|(shorts\/))([^#\&\?]*).*/;
