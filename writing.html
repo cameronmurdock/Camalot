@@ -115,13 +115,20 @@
 
                     if (substackData.status === 'ok') {
                         substackData.items.forEach(item => {
-                            // Substack puts the subtitle in the description
+                            // Filter out "Coming soon" if it's still in Substack's cache
+                            if (item.title.toLowerCase().includes('coming soon')) return;
+
+                            // Extract a clean subtitle from description or content
+                            let subtitle = stripHtml(item.description || item.content || '');
+                            subtitle = subtitle.replace(/^By .*? · .*? min read/, '').trim(); // Remove Substack meta if present
+                            subtitle = subtitle.substring(0, 200);
+
                             allItems.push({
                                 title: item.title,
                                 link: item.link,
                                 date: new Date(item.pubDate),
                                 type: 'Essay',
-                                subtitle: stripHtml(item.description),
+                                subtitle: subtitle,
                                 desc: 'Read on Substack'
                             });
                         });
@@ -130,14 +137,16 @@
                     if (youtubeData.status === 'ok') {
                         youtubeData.items.forEach(item => {
                             const videoId = extractVideoId(item.link);
-                            allItems.push({
-                                title: item.title,
-                                link: item.link,
-                                date: new Date(item.pubDate),
-                                type: 'Video',
-                                videoId: videoId,
-                                desc: 'Watch on YouTube'
-                            });
+                            if (videoId) {
+                                allItems.push({
+                                    title: item.title,
+                                    link: item.link,
+                                    date: new Date(item.pubDate),
+                                    type: 'Video',
+                                    videoId: videoId,
+                                    desc: 'Watch on YouTube'
+                                });
+                            }
                         });
                     }
 
@@ -198,9 +207,10 @@
             }
 
             function extractVideoId(url) {
-                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                // Regex updated to handle /shorts/, watch?v=, youtu.be, etc.
+                const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(\&v=)|(shorts\/))([^#\&\?]*).*/;
                 const match = url.match(regExp);
-                return (match && match[2].length === 11) ? match[2] : null;
+                return (match && match[9].length === 11) ? match[9] : null;
             }
         });
     </script>
