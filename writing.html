@@ -87,18 +87,42 @@
             const container = document.getElementById('combined-feed');
 
             async function fetchFeed(url, type) {
-                try {
-                    // Try AllOrigins first with a cache buster inside the target URL
-                    const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url + '?t=' + now)}`;
-                    const response = await fetch(proxyUrl);
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                    const data = await response.json();
-                    if (!data.contents) throw new Error('No contents found in proxy response');
-                    return parseRSS(data.contents, type);
-                } catch (err) {
-                    console.error(`Error fetching ${type} feed:`, err);
-                    return []; // Return empty array on failure
+                const sep = url.includes('?') ? '&' : '?';
+                const targetUrl = url + sep + 't=' + now;
+                
+                // Try multiple proxies for reliability
+                const proxies = [
+                    (u) => `https://api.allorigins.win/get?url=${encodeURIComponent(u)}`,
+                    (u) => `https://corsproxy.io/?${encodeURIComponent(u)}`
+                ];
+
+                for (const getProxyUrl of proxies) {
+                    try {
+                        const proxyUrl = getProxyUrl(targetUrl);
+                        const response = await fetch(proxyUrl);
+                        if (!response.ok) continue;
+                        
+                        const text = await response.text();
+                        let xmlText = '';
+                        
+                        try {
+                            // Try to parse as JSON first (AllOrigins format)
+                            const data = JSON.parse(text);
+                            xmlText = data.contents || '';
+                        } catch (e) {
+                            // If not JSON, it's likely raw XML (corsproxy format)
+                            xmlText = text;
+                        }
+                        
+                        if (xmlText && xmlText.includes('<')) {
+                            return parseRSS(xmlText, type);
+                        }
+                    } catch (err) {
+                        console.warn(`Proxy failed for ${type} feed, trying next...`);
+                    }
                 }
+                console.error(`All proxies failed for ${type} feed`);
+                return [];
             }
 
             // Helper to parse XML to an array of objects
@@ -144,13 +168,23 @@
                     const entries = xmlDoc.querySelectorAll("entry");
                     entries.forEach(entry => {
                         try {
-                            const linkEl = entry.querySelector("link");
-                            if (!linkEl) return;
-                            const link = linkEl.getAttribute("href");
-                            const videoId = extractVideoId(link);
+                            // Find the correct alternate link
+                            let link = '';
+                            const links = entry.querySelectorAll("link");
+                            links.forEach(l => {
+                                if (l.getAttribute("rel") === "alternate") {
+                                    link = l.getAttribute("href");
+                                }
+                            });
                             
+                            // Fallback to first link if no alternate found
+                            if (!link && links.length > 0) link = links[0].getAttribute("href");
+                            
+                            if (!link) return;
+
+                            const videoId = extractVideoId(link);
                             const titleEl = entry.querySelector("title");
-                            const pubEl = entry.querySelector("published");
+                            const pubEl = entry.querySelector("published") || entry.querySelector("updated");
 
                             if (videoId && titleEl) {
                                 items.push({
@@ -161,6 +195,8 @@
                                     videoId: videoId,
                                     desc: 'Watch on YouTube'
                                 });
+                            } else {
+                                console.warn('Could not extract videoId or title for entry:', link);
                             }
                         } catch (e) {
                             console.error('Error parsing video entry', e);
@@ -171,10 +207,13 @@
             }
 
             async function loadAllFeeds() {
+                console.log('Fetching feeds...');
                 const [substackItems, youtubeItems] = await Promise.all([
                     fetchFeed(substackUrl, 'Essay'),
                     fetchFeed(youtubeUrl, 'Video')
                 ]);
+                
+                console.log(`Loaded ${substackItems.length} essays and ${youtubeItems.length} videos`);
 
                 const allItems = [...substackItems, ...youtubeItems];
                 
@@ -231,9 +270,14 @@
             }
 
             function extractVideoId(url) {
-                const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(\&v=)|(shorts\/))([^#\&\?]*).*/;
+                // Explicit check for shorts
+                if (url.includes('/shorts/')) {
+                    const parts = url.split('/shorts/');
+                    if (parts[1]) return parts[1].split(/[?&]/)[0];
+                }
+                const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?v=)|(\&v=))([^#\&\?]*).*/;
                 const match = url.match(regExp);
-                return (match && match[9].length === 11) ? match[9] : null;
+                return (match && match[8].length === 11) ? match[8] : null;
             }
         });
     </script>
