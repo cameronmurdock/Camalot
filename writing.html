@@ -102,15 +102,29 @@
                             const rawContent = item.content || '';
                             
                             // 1. Try description first
-                            subtitle = stripHtml(rawDesc);
+                            let cleanDesc = stripHtml(rawDesc);
                             
-                            // 2. If description is too short or just repeats the title, try content
-                            if (subtitle.length < 10 || subtitle === title) {
-                                subtitle = stripHtml(rawContent);
+                            // 2. Ignore generic Substack boilerplate
+                            const boilerplate = [
+                                "thanks for reading cameron's substack",
+                                "subscribe for free to receive new posts",
+                                "this is cameron's substack"
+                            ];
+                            
+                            const isGeneric = boilerplate.some(phrase => cleanDesc.toLowerCase().includes(phrase));
+                            
+                            if (isGeneric || cleanDesc.length < 10 || cleanDesc === title) {
+                                // If description is generic or missing, pull from main content
+                                // We look for the first real paragraph after stripping widgets
+                                let bodyText = stripHtml(rawContent);
+                                bodyText = bodyText.replace(/Subscribe.*?support my work\./gi, '');
+                                bodyText = bodyText.replace(/By .*? · \d+ min read/gi, '');
+                                subtitle = bodyText.trim();
+                            } else {
+                                subtitle = cleanDesc;
                             }
 
-                            // 3. Clean up Substack's auto-injected author line
-                            subtitle = subtitle.replace(/^By .*? · \d+ min read/, '');
+                            // 3. Final cleanup of common artifacts
                             subtitle = subtitle.replace(/^By .*? · .*? min read/, '');
                             subtitle = subtitle.trim();
 
