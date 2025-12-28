@@ -52,13 +52,15 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const substackFeed = 'https://camalot999.substack.com/feed';
-            const youtubeFeed = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCQEKGBSvt-Q_k0O4Z7Gwn-g';
+            // Add timestamp to bypass caching (cache busting)
+            const now = new Date().getTime();
+            const substackFeed = `https://camalot999.substack.com/feed?t=${now}`;
+            const youtubeFeed = `https://www.youtube.com/feeds/videos.xml?channel_id=UCQEKGBSvt-Q_k0O4Z7Gwn-g&t=${now}`;
             
             const container = document.getElementById('combined-feed');
 
-            // Helper to get JSON via rss2json
-            const getFeed = (url) => fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`).then(r => r.json());
+            // Helper to get JSON via rss2json with cache busting param
+            const getFeed = (url) => fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}&_=${now}`).then(r => r.json());
 
             Promise.all([getFeed(substackFeed), getFeed(youtubeFeed)])
                 .then(([substackData, youtubeData]) => {
