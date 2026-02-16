@@ -1,222 +1,352 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offerings | Cameron Ely-Murdock</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offerings | Cameron Ely-Murdock</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Offerings page layout + typography fixes (scoped) */
+    body.offerings .label{
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      color:#fff;
+      opacity:.7;
+      margin:2.25rem 0 .75rem;
+    }
+    body.offerings .subtitle{
+      font-style:italic;
+      opacity:.55;
+      margin:0;
+    }
+    body.offerings .kicker{
+      font-size:1.25rem;
+      color:#fff;
+      margin:0 0 2rem 0;
+      max-width:55ch;
+    }
+    body.offerings ul.clean{
+      list-style:none;
+      padding:0;
+      margin:0 0 2rem 0;
+      color:var(--text-primary);
+    }
+    body.offerings ul.clean li{
+      position:relative;
+      padding-left:1.25rem;
+      margin-bottom:.6rem;
+    }
+    body.offerings ul.clean li::before{
+      content:"—";
+      position:absolute;
+      left:0;
+      opacity:.55;
+    }
+    body.offerings .meta{
+      margin-top:2.25rem;
+      padding-top:1.25rem;
+      border-top:1px solid rgba(255,255,255,0.1);
+      opacity:.65;
+    }
+
+    /* Key fix: right column starts BELOW section heading */
+    body.offerings .editorial-grid{ align-items:start; }
+    body.offerings .pkg-right{ padding-top: 5.5rem; } /* tweak if you change h2 sizing */
+    @media (max-width: 900px){
+      body.offerings .pkg-right{ padding-top: 0; } /* stacked layout shouldn't offset */
+    }
+  </style>
 </head>
-<body>
-    <nav>
-        <div class="container nav-container">
-            <a href="index.html" class="logo">Cameron Ely-Murdock</a>
-            <ul class="nav-menu">
-                <li><a href="rivr-social.html">Rivr</a></li>
-                <li><a href="work.html">Work</a></li>
-                <li><a href="offerings.html" class="active">Offerings</a></li>
-                <li><a href="writing.html">Writing</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+
+<body class="offerings">
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Cameron Ely-Murdock</a>
+      <ul class="nav-menu">
+        <li><a href="rivr-social.html">Rivr</a></li>
+        <li><a href="offerings.html" class="active">Offerings</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-subtitle">Offerings</span>
+        <h1>Systems<br>Work</h1>
+        <p style="font-size: 1.5rem; color: #fff; opacity: 0.9;">
+          I help organizations build structure where coordination has real consequences—work, money, responsibility, ownership.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Diagnose -->
+  <section>
+    <div class="container">
+      <div class="editorial-grid">
+
+        <!-- LEFT -->
+        <div>
+          <h2>Diagnose</h2>
+          <p class="subtitle">Systems Audit</p>
+
+          <div class="label">Where this applies</div>
+          <p>
+            Venues and operators. Small businesses running real operations. Mission-driven orgs coordinating programs.
+            Founder-led teams where execution is getting strained.
+          </p>
+
+          <div class="label">Common problems</div>
+          <ul class="clean">
+            <li>Work lives in people’s heads</li>
+            <li>Roles blur or stay undefined</li>
+            <li>Scheduling breaks and handoffs get dropped</li>
+            <li>Things stall between “someone should” and “someone did”</li>
+          </ul>
+
+          <div class="label">What changes</div>
+          <ul class="clean" style="margin-bottom:0;">
+            <li>The system becomes visible</li>
+            <li>Breakpoints become obvious</li>
+            <li>Fixes become concrete and actionable</li>
+          </ul>
         </div>
-    </nav>
 
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-subtitle">Offerings</span>
-                <h1>Systems<br>Work</h1>
-                <p style="font-size: 1.5rem; color: #fff; opacity: 0.9;">I help organizations build structure where coordination has real consequences—work, money, responsibility, ownership.</p>
-            </div>
+        <!-- RIGHT -->
+        <div class="pkg-right">
+          <p class="kicker">See how the system actually works—not how it’s described.</p>
+
+          <div class="label">Scope</div>
+          <ul class="clean">
+            <li>Workflow mapping</li>
+            <li>Role clarity review</li>
+            <li>Tool stack scan</li>
+            <li>Bottleneck identification</li>
+            <li>Failure points + hidden labor</li>
+          </ul>
+
+          <div class="label">Deliverables</div>
+          <ul class="clean">
+            <li>Written systems report</li>
+            <li>Visual workflow map</li>
+            <li>Priority fixes list</li>
+            <li>Recommended next steps</li>
+          </ul>
+
+          <div class="meta">
+            Timeline: 2–3 weeks<br>
+            Contracts starting at $2,500
+          </div>
         </div>
-    </header>
 
-    <!-- Diagnose -->
-    <section>
-        <div class="container">
-            <div class="editorial-grid">
-                <div>
-                    <h2>Diagnose</h2>
-                    <p style="font-style: italic; opacity: 0.6;">Systems Audit</p>
-                </div>
-                <div>
-                    <p style="font-size: 1.25rem; color: #fff;">
-                        See how the system actually works—not how it's described.
-                    </p>
+      </div>
+    </div>
+  </section>
 
-                    <p style="color: #fff; margin-bottom: 1rem;">Scope</p>
-                    <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Workflow mapping</li>
-                        <li style="margin-bottom: 0.5rem;">— Role clarity review</li>
-                        <li style="margin-bottom: 0.5rem;">— Tool stack scan</li>
-                        <li style="margin-bottom: 0.5rem;">— Bottleneck identification</li>
-                        <li style="margin-bottom: 0.5rem;">— Failure points + hidden labor</li>
-                    </ul>
+  <!-- Stabilize -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="editorial-grid" style="margin-top: 4rem;">
 
-                    <p style="color: #fff; margin-bottom: 1rem;">Deliverables</p>
-                    <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Written systems report</li>
-                        <li style="margin-bottom: 0.5rem;">— Visual workflow map</li>
-                        <li style="margin-bottom: 0.5rem;">— Priority fixes list</li>
-                        <li style="margin-bottom: 0.5rem;">— Recommended next steps</li>
-                    </ul>
+        <!-- LEFT -->
+        <div>
+          <h2>Stabilize</h2>
+          <p class="subtitle">Operations Reset</p>
 
-                    <p style="opacity: 0.6;">Timeline: 2–3 weeks<br>Contracts starting at $2,500</p>
-                </div>
-            </div>
+          <div class="label">Where this applies</div>
+          <p>
+            Venues. Restaurants. Studios. Agencies. Retreat operators. Service firms where coordination load is constant.
+          </p>
+
+          <div class="label">Common problems</div>
+          <ul class="clean">
+            <li>Staffing confusion and scheduling collisions</li>
+            <li>Dropped handoffs between roles</li>
+            <li>Projects depend on one person to keep moving</li>
+            <li>Everyone’s busy, but “done” is unclear</li>
+          </ul>
+
+          <div class="label">What changes</div>
+          <ul class="clean" style="margin-bottom:0;">
+            <li>Ownership becomes explicit</li>
+            <li>Workflows become trackable</li>
+            <li>Execution stabilizes with less scrambling</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- Stabilize -->
-    <section style="padding-top: 0;">
-        <div class="container">
-            <div class="divider"></div>
-            <div class="editorial-grid" style="margin-top: 4rem;">
-                <div>
-                    <h2>Stabilize</h2>
-                    <p style="font-style: italic; opacity: 0.6;">Operations Reset</p>
-                </div>
-                <div>
-                    <p style="font-size: 1.25rem; color: #fff;">
-                        Install structure so execution stops relying on memory and heroics.
-                    </p>
+        <!-- RIGHT -->
+        <div class="pkg-right">
+          <p class="kicker">Install structure so execution stops relying on memory and heroics.</p>
 
-                    <p style="color: #fff; margin-bottom: 1rem;">Scope</p>
-                    <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Role + responsibility locking</li>
-                        <li style="margin-bottom: 0.5rem;">— Task system installation</li>
-                        <li style="margin-bottom: 0.5rem;">— Handoff clarification</li>
-                        <li style="margin-bottom: 0.5rem;">— Meeting + reporting cadence</li>
-                        <li style="margin-bottom: 0.5rem;">— Definition of done for recurring work</li>
-                    </ul>
+          <div class="label">Scope</div>
+          <ul class="clean">
+            <li>Role + responsibility locking</li>
+            <li>Task system installation</li>
+            <li>Handoff clarification</li>
+            <li>Meeting + reporting cadence</li>
+            <li>Definition of done for recurring work</li>
+          </ul>
 
-                    <p style="color: #fff; margin-bottom: 1rem;">Implementation includes</p>
-                    <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Tool configuration (Notion or PM system)</li>
-                        <li style="margin-bottom: 0.5rem;">— Templates + checklists</li>
-                        <li style="margin-bottom: 0.5rem;">— Operational rhythms</li>
-                    </ul>
+          <div class="label">Implementation includes</div>
+          <ul class="clean">
+            <li>Tool configuration (Notion or PM system)</li>
+            <li>Templates + checklists</li>
+            <li>Operational rhythms</li>
+          </ul>
 
-                    <p style="opacity: 0.6;">Timeline: 4–8 weeks<br>Contracts starting at $6,000</p>
-                </div>
-            </div>
+          <div class="meta">
+            Timeline: 4–8 weeks<br>
+            Contracts starting at $6,000
+          </div>
         </div>
-    </section>
 
-    <!-- Architect -->
-    <section style="padding-top: 0;">
-        <div class="container">
-            <div class="divider"></div>
-            <div class="editorial-grid" style="margin-top: 4rem;">
-                <div>
-                    <h2>Architect</h2>
-                    <p style="font-style: italic; opacity: 0.6;">Org & Governance Design</p>
-                </div>
-                <div>
-                    <p style="font-size: 1.25rem; color: #fff;">
-                        Build the container the work actually lives inside.
-                    </p>
+      </div>
+    </div>
+  </section>
 
-                    <p style="color: #fff; margin-bottom: 1rem;">Scope</p>
-                    <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Org structure design</li>
-                        <li style="margin-bottom: 0.5rem;">— Decision pathways</li>
-                        <li style="margin-bottom: 0.5rem;">— Governance frameworks</li>
-                        <li style="margin-bottom: 0.5rem;">— Leadership + board structuring</li>
-                        <li style="margin-bottom: 0.5rem;">— Ownership / cooperative models (if relevant)</li>
-                    </ul>
+  <!-- Architect -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="editorial-grid" style="margin-top: 4rem;">
 
-                    <p style="color: #fff; margin-bottom: 1rem;">May include</p>
-                    <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Membership classes</li>
-                        <li style="margin-bottom: 0.5rem;">— Voting systems</li>
-                        <li style="margin-bottom: 0.5rem;">— Contribution tracking</li>
-                        <li style="margin-bottom: 0.5rem;">— Treasury stewardship models</li>
-                    </ul>
+        <!-- LEFT -->
+        <div>
+          <h2>Architect</h2>
+          <p class="subtitle">Org & Governance Design</p>
 
-                    <p style="opacity: 0.6;">Timeline: 6–12 weeks<br>Contracts starting at $12,000</p>
-                </div>
-            </div>
+          <div class="label">Where this applies</div>
+          <p>
+            Cooperatives. Networks. Multi-site organizations. Platforms coordinating real work and shared resources.
+          </p>
+
+          <div class="label">Common problems</div>
+          <ul class="clean">
+            <li>Decision gridlock or unclear authority</li>
+            <li>Governance ambiguity that creates conflict</li>
+            <li>Ownership confusion (who benefits, who decides, who carries responsibility)</li>
+            <li>Scaling strain that breaks informal agreements</li>
+          </ul>
+
+          <div class="label">What changes</div>
+          <ul class="clean" style="margin-bottom:0;">
+            <li>Decision authority is defined</li>
+            <li>Governance becomes functional and legible</li>
+            <li>Structure holds growth without constant renegotiation</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- Ongoing Support -->
-    <section style="padding-top: 0;">
-        <div class="container">
-            <div class="divider"></div>
-            <div class="editorial-grid" style="margin-top: 4rem;">
-                <div>
-                    <h2>Ongoing Support</h2>
-                    <p style="font-style: italic; opacity: 0.6;">Fractional Systems Advisor</p>
-                </div>
-                <div>
-                    <p style="font-size: 1.25rem; color: #fff;">
-                        For organizations that need continued structural support.
-                    </p>
+        <!-- RIGHT -->
+        <div class="pkg-right">
+          <p class="kicker">Build the container the work actually lives inside.</p>
 
-                    <ul style="list-style: none; margin-bottom: 2rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Systems iteration</li>
-                        <li style="margin-bottom: 0.5rem;">— Governance support</li>
-                        <li style="margin-bottom: 0.5rem;">— Workflow evolution</li>
-                        <li style="margin-bottom: 0.5rem;">— Strategic translation</li>
-                    </ul>
+          <div class="label">Scope</div>
+          <ul class="clean">
+            <li>Org structure design</li>
+            <li>Decision pathways</li>
+            <li>Governance frameworks</li>
+            <li>Leadership + board structuring</li>
+            <li>Ownership / cooperative models (if relevant)</li>
+          </ul>
 
-                    <p style="opacity: 0.6;">Contracts starting at $2,000 / month</p>
-                </div>
-            </div>
+          <div class="label">May include</div>
+          <ul class="clean">
+            <li>Membership classes</li>
+            <li>Voting systems</li>
+            <li>Contribution tracking</li>
+            <li>Treasury stewardship models</li>
+          </ul>
+
+          <div class="meta">
+            Timeline: 6–12 weeks<br>
+            Contracts starting at $12,000
+          </div>
         </div>
-    </section>
 
-    <!-- Fit -->
-    <section style="background: #0d0d0d;">
-        <div class="container">
-            <div class="editorial-grid">
-                <div>
-                    <h2>Fit</h2>
-                </div>
-                <div>
-                    <p style="color: #fff; margin-bottom: 1rem;">Good Fit</p>
-                    <ul style="list-style: none; margin-bottom: 3rem; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Community spaces + venues</li>
-                        <li style="margin-bottom: 0.5rem;">— Cooperatives</li>
-                        <li style="margin-bottom: 0.5rem;">— Nonprofits scaling operations</li>
-                        <li style="margin-bottom: 0.5rem;">— Platforms with real coordination load</li>
-                        <li style="margin-bottom: 0.5rem;">— Networks managing shared resources</li>
-                    </ul>
+      </div>
+    </div>
+  </section>
 
-                    <p style="color: #fff; margin-bottom: 1rem;">Not a Fit</p>
-                    <ul style="list-style: none; color: var(--text-primary);">
-                        <li style="margin-bottom: 0.5rem;">— Marketing optimization</li>
-                        <li style="margin-bottom: 0.5rem;">— Growth hacking</li>
-                        <li style="margin-bottom: 0.5rem;">— Content-first businesses</li>
-                        <li style="margin-bottom: 0.5rem;">— AI hype strategy</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- Ongoing Support -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="divider"></div>
+      <div class="editorial-grid" style="margin-top: 4rem;">
+
+        <!-- LEFT -->
+        <div>
+          <h2>Ongoing Support</h2>
+          <p class="subtitle">Fractional Systems Advisor</p>
+
+          <div class="label">Where this applies</div>
+          <p>
+            Teams maintaining systems after an audit, reset, or redesign—especially during growth, turnover, or operational change.
+          </p>
+
+          <div class="label">Common problems</div>
+          <ul class="clean">
+            <li>Systems drift over time</li>
+            <li>Processes decay back into informal habits</li>
+            <li>Governance stalls without facilitation</li>
+          </ul>
+
+          <div class="label">What changes</div>
+          <ul class="clean" style="margin-bottom:0;">
+            <li>Structure stays current</li>
+            <li>Systems evolve with the organization</li>
+            <li>Leadership stays supported</li>
+          </ul>
         </div>
-    </section>
 
-    <!-- CTA -->
-    <section>
-        <div class="container">
-            <p style="font-size: 1.5rem; color: #fff; opacity: 0.9; max-width: 700px;">
-                If your coordination complexity is outrunning your structure, <a href="contact.html" style="border-bottom: 1px solid #fff; padding-bottom: 5px;">reach out</a>.
-            </p>
-        </div>
-    </section>
+        <!-- RIGHT -->
+        <div class="pkg-right">
+          <p class="kicker">For organizations that need continued structural support.</p>
 
-    <footer>
-        <div class="container">
-            <div class="editorial-grid">
-                <div>
-                    <div class="logo" style="font-size: 1rem;">Boulder, CO</div>
-                    <a href="mailto:murdock.cameron@gmail.com" style="display: block; margin-top: 0.5rem;">murdock.cameron@gmail.com</a>
-                </div>
-                <div style="display: flex; gap: 2rem;">
-                    <a href="contact.html">Contact</a>
-                </div>
-            </div>
+          <div class="label">Scope</div>
+          <ul class="clean">
+            <li>Systems iteration</li>
+            <li>Governance support</li>
+            <li>Workflow evolution</li>
+            <li>Strategic translation</li>
+          </ul>
+
+          <div class="meta">
+            Contracts starting at $2,000 / month
+          </div>
         </div>
-    </footer>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container">
+      <p style="font-size: 1.5rem; color: #fff; opacity: 0.9; max-width: 700px;">
+        If your coordination complexity is outrunning your structure,
+        <a href="contact.html" style="border-bottom: 1px solid #fff; padding-bottom: 5px;">reach out</a>.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="editorial-grid">
+        <div>
+          <div class="logo" style="font-size: 1rem;">Boulder, CO</div>
+          <a href="mailto:murdock.cameron@gmail.com" style="display: block; margin-top: 0.5rem;">murdock.cameron@gmail.com</a>
+        </div>
+        <div style="display: flex; gap: 2rem;">
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
