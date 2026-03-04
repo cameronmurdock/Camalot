@@ -48,7 +48,7 @@ A cinematic, editorial-style personal website focusing on systems design and soc
 ## Page-by-Page Specification
 
 ### 1. Homepage (`index.html`)
-- **Hero:** "And So It Is..." (Garamond Italic). Subtitle: "Systems Designer".
+- **Hero:** "Systems Stewardship" (Garamond Italic). Subtitle: "Systems Designer".
 - **Mission:** Split grid. Left: "The Mission". Right: Narrative about broken coordination systems.
 - **Selected Focus:** A list of 3 key areas (Rivr, Systems Design, The Thesis) using the `.work-item` component.
 - **Footer:** Simple editorial footprint with email and GitHub links.
