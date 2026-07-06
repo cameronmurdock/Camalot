@@ -205,6 +205,56 @@ nav {
     max-width: 500px;
 }
 
+/* Permission-filtered objects projected from the sovereign Rivr instance. */
+.projection-heading {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+    margin: 4rem 0 2rem;
+}
+
+.projection-heading h2 {
+    margin-bottom: 0;
+}
+
+.projection-list {
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.projection-item {
+    display: grid;
+    grid-template-columns: minmax(7rem, .7fr) 2fr auto;
+    gap: 2rem;
+    align-items: baseline;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.projection-item h3,
+.projection-item p {
+    margin: 0;
+}
+
+.projection-item h3 {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 300;
+}
+
+.projection-meta,
+.projection-link,
+.projection-status {
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.projection-link {
+    white-space: nowrap;
+}
+
 /* Footer */
 footer {
     padding: 6rem 0;
@@ -220,6 +270,12 @@ footer {
     .editorial-grid {
         grid-template-columns: 1fr;
         gap: 4rem;
+    }
+
+    .projection-heading,
+    .projection-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     h1 {

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cameron Ely-Murdock</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="alternate" type="application/ld+json" href="https://rivr.camalot.me/api/universal-manifest/person/aa29fa2d-4c2a-4eaf-a069-b2203a2ce667" title="Universal Manifest">
 </head>
 <body>
     <nav>
@@ -92,6 +93,23 @@
         </div>
     </section>
 
+    <section class="rivr-projections" aria-labelledby="rivr-projections-title">
+        <div class="container">
+            <div class="divider"></div>
+            <div class="projection-heading">
+                <div>
+                    <span class="hero-subtitle">Sovereign objects</span>
+                    <h2 id="rivr-projections-title">Live from Rivr</h2>
+                </div>
+                <p>Public, permission-filtered projects, events, writing, and relationships projected from my sovereign Rivr instance. Each object retains its canonical Universal Manifest identity and linked Solid or AT Protocol references when present.</p>
+            </div>
+            <div id="rivr-object-list" class="projection-list" aria-live="polite">
+                <p class="projection-status">Loading public objects…</p>
+            </div>
+            <noscript><p><a href="https://rivr.camalot.me/profile/cameron">View Cameron’s public objects on Rivr.</a></p></noscript>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="editorial-grid">
@@ -106,5 +124,6 @@
             </div>
         </div>
     </footer>
+    <script src="rivr-projections.js" defer></script>
 </body>
 </html>
