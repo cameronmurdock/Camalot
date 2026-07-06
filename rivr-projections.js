@@ -1,7 +1,7 @@
 (() => {
     "use strict";
 
-    const endpoint = "/rivr-projections/profile/cameron";
+    const endpoint = "/rivr-projections/profile-cameron.json";
     const target = document.getElementById("rivr-object-list");
     if (!target) return;
 
