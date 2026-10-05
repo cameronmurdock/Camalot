@@ -92,15 +92,15 @@
             <a href="../index.html">Home</a>
             <a href="../portfolio" aria-current="page">Portfolio</a>
             <div class="spy" data-spy>
+                <a href="#ai">AI systems</a>
+                <a href="#seo">SEO methods</a>
                 <a href="#dci">Denver Contact Improv</a>
                 <a href="#rivr">Rivr</a>
                 <a href="#planner">Post planner</a>
                 <a href="#ownership">Ownership protocol</a>
                 <a href="#riverside">The Riverside</a>
-                <a href="#ai">AI systems</a>
-                <a href="#seo">Search methods</a>
-                <a href="#experience">Experience</a>
                 <a href="#kat">Visual design</a>
+                <a href="#experience">Experience</a>
             </div>
             <a href="../rivr-social.html">Rivr</a>
             <a href="../offerings.html">Offerings</a>
@@ -132,35 +132,67 @@
             </div>
         </section>
 
-        <section class="section" id="ai" aria-labelledby="ai-title">
-            <div class="wrap section__head">
-                <h2 id="ai-title">AI Systems &amp; Agent Orchestration</h2>
-                <p>I turn goals into useful workflows, with people in control.</p>
-            </div>
-            <div class="rows">
-                <div class="row">
-                    <p class="row__meta">Plan</p>
-                    <div class="row__main">
-                        <h3>Make the work clear</h3>
-                        <p>Turn goals into AI workflows, break them into tasks, and coordinate agents.</p>
+        <div class="section methods">
+            <section class="section" id="ai" aria-labelledby="ai-title">
+                <div class="wrap section__head">
+                    <h2 id="ai-title">AI Systems &amp; Agent Orchestration</h2>
+                    <p>I turn goals into useful workflows, with people in control.</p>
+                </div>
+                <div class="rows">
+                    <div class="row">
+                        <p class="row__meta">Plan</p>
+                        <div class="row__main">
+                            <h3>Make the work clear</h3>
+                            <p>Turn goals into AI workflows, break them into tasks, and coordinate agents.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="row__meta">Equip</p>
+                        <div class="row__main">
+                            <h3>Give agents what they need</h3>
+                            <p>Provide the right tools, context and data. Choose models for performance and cost.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="row__meta">Verify</p>
+                        <div class="row__main">
+                            <h3>Keep a person in the loop</h3>
+                            <p>Test results, catch failures, and set guardrails and human checkpoints.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <p class="row__meta">Equip</p>
-                    <div class="row__main">
-                        <h3>Give agents what they need</h3>
-                        <p>Provide the right tools, context and data. Choose models for performance and cost.</p>
+            </section>
+
+            <section class="section" id="seo" aria-labelledby="seo-title">
+                <div class="wrap section__head">
+                    <h2 id="seo-title">SEO methods</h2>
+                    <p>Clear pages, useful answers and sound technical basics.</p>
+                </div>
+                <div class="rows">
+                    <div class="row">
+                        <p class="row__meta">Page basics</p>
+                        <div class="row__main">
+                            <h3>Say what each page is for</h3>
+                            <p>Clear titles, descriptions, headings and local terms.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="row__meta">Search structure</p>
+                        <div class="row__main">
+                            <h3>Make pages easy to find</h3>
+                            <p>Structured data, canonical URLs and a sitemap.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p class="row__meta">Useful content</p>
+                        <div class="row__main">
+                            <h3>Answer real questions</h3>
+                            <p>Helpful guides and FAQs, fast pages, accessible images and good sharing previews.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <p class="row__meta">Verify</p>
-                    <div class="row__main">
-                        <h3>Keep a person in the loop</h3>
-                        <p>Test results, catch failures, and set guardrails and human checkpoints.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <article class="case" id="dci" aria-labelledby="dci-title">
             <div class="case__body">
@@ -168,7 +200,7 @@
                     <h2 id="dci-title">Denver Contact Improv</h2>
                     <p class="case__kind">Website, technical SEO and client-run editing</p>
                     <p>Michael Bernal teaches Contact Improvisation in Denver. I designed and built his site and its sister site, Art of Living CI: ten pages, a page for each class series, a beginner’s guide, and an FAQ in his own words. Both are static Next.js exports, so they load from a CDN with no server to maintain.</p>
-                    <p>The search work is on every page rather than bolted on: titles and descriptions written from the phrases people type, canonical URLs, structured data for the business, the FAQ and the guide, a sitemap, and sharing cards. The sister site points its canonicals at the main domain so the two never compete. The full list is under <a class="text-link" href="#seo">search methods</a>.</p>
+                    <p>The search work is on every page rather than bolted on: titles and descriptions written from the phrases people type, canonical URLs, structured data for the business, the FAQ and the guide, a sitemap, and sharing cards. The sister site points its canonicals at the main domain so the two never compete. The full list is under <a class="text-link" href="#seo">SEO methods</a>.</p>
                     <p>Michael updates the site himself through a private chat I built for him. He previews every change on a staging host, and nothing reaches production until he asks for it.</p>
                 </div>
                 <dl class="facts glass">
@@ -576,34 +608,61 @@ chmod 600 secrets.local/*</code></pre>
             </div>
         </article>
 
-        <section class="section" id="seo" aria-labelledby="seo-title">
+        <section class="section" id="kat" aria-labelledby="kat-title">
             <div class="wrap section__head">
-                <h2 id="seo-title">Search methods</h2>
-                <p>Clear pages, useful answers and sound technical basics.</p>
+                <h2 id="kat-title">Visual design by Kathleen Marie Rose</h2>
+                <p>Kat is the visual designer I bring in for brand, social and interface work. She leads vision, creative direction and culture at Rivr, and photographs as <a class="text-link" href="https://www.truetoessence.com/" rel="noopener">True to Essence</a>. She sets the look; I build it and automate what repeats.</p>
             </div>
-            <div class="rows">
-                <div class="row">
-                    <p class="row__meta">Page basics</p>
-                    <div class="row__main">
-                        <h3>Say what each page is for</h3>
-                        <p>Clear titles, descriptions, headings and local terms.</p>
-                    </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <p class="case__kind">Social media, websites, interfaces and brand kits</p>
+                    <p>A brand kit becomes a set of templates, the templates become scheduled posts, and the person running the account approves instead of assembling. That is the join between her work and mine.</p>
                 </div>
-                <div class="row">
-                    <p class="row__meta">Search structure</p>
-                    <div class="row__main">
-                        <h3>Make pages easy to find</h3>
-                        <p>Structured data, canonical URLs and a sitemap.</p>
+                <dl class="facts glass">
+                    <div><dt>Works in</dt><dd><ul class="tags"><li>Adobe</li><li>Adobe Portfolio</li><li>Canva</li><li>Squarespace</li><li>Photography</li></ul></dd></div>
+                    <div><dt>Together</dt><dd>Social media management and its automation</dd></div>
+                    <div><dt>Her studio</dt><dd><a href="https://www.truetoessence.com/" rel="noopener">truetoessence.com</a></dd></div>
+                </dl>
+            </div>
+            <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Visual design by Kathleen Marie Rose, scrolls sideways">
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">Creative direction, rivr.social</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020281-5bia383klfn-rivr-landing.webp" width="1280" height="800" alt="The Rivr landing page, whose look Kathleen directed: white type over dark water" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel panel--tall glass">
+                        <div class="slot">
+                            <p class="slot__kind">Social media posts</p>
+                            <p class="slot__note">Artwork to come: designed posts and campaign sets.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <p class="row__meta">Useful content</p>
-                    <div class="row__main">
-                        <h3>Answer real questions</h3>
-                        <p>Helpful guides and FAQs, fast pages, accessible images and good sharing previews.</p>
+                    <div class="panel panel--tall glass">
+                        <div class="slot">
+                            <p class="slot__kind">Social media posts</p>
+                            <p class="slot__note">Artwork to come: event promotion for The Riverside.</p>
+                        </div>
+                    </div>
+                    <div class="panel glass">
+                        <div class="slot">
+                            <p class="slot__kind">Websites</p>
+                            <p class="slot__note">Artwork to come: sites designed in Squarespace and Adobe Portfolio.</p>
+                        </div>
+                    </div>
+                    <div class="panel glass">
+                        <div class="slot">
+                            <p class="slot__kind">Interface design</p>
+                            <p class="slot__note">Artwork to come: screens and components.</p>
+                        </div>
+                    </div>
+                    <div class="panel panel--square glass">
+                        <div class="slot">
+                            <p class="slot__kind">Brand kits</p>
+                            <p class="slot__note">Artwork to come: type, colour and logo systems built in Canva and Adobe.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </section>
 
         <section class="section" id="experience" aria-labelledby="experience-title">
@@ -677,62 +736,6 @@ chmod 600 secrets.local/*</code></pre>
             </div>
         </section>
 
-        <section class="section" id="kat" aria-labelledby="kat-title">
-            <div class="wrap section__head">
-                <h2 id="kat-title">Visual design by Kathleen Marie Rose</h2>
-                <p>Kat is the visual designer I bring in for brand, social and interface work. She leads vision, creative direction and culture at Rivr, and photographs as <a class="text-link" href="https://www.truetoessence.com/" rel="noopener">True to Essence</a>. She sets the look; I build it and automate what repeats.</p>
-            </div>
-            <div class="case__body">
-                <div class="case__text">
-                    <p class="case__kind">Social media, websites, interfaces and brand kits</p>
-                    <p>A brand kit becomes a set of templates, the templates become scheduled posts, and the person running the account approves instead of assembling. That is the join between her work and mine.</p>
-                </div>
-                <dl class="facts glass">
-                    <div><dt>Works in</dt><dd><ul class="tags"><li>Adobe</li><li>Adobe Portfolio</li><li>Canva</li><li>Squarespace</li><li>Photography</li></ul></dd></div>
-                    <div><dt>Together</dt><dd>Social media management and its automation</dd></div>
-                    <div><dt>Her studio</dt><dd><a href="https://www.truetoessence.com/" rel="noopener">truetoessence.com</a></dd></div>
-                </dl>
-            </div>
-            <div class="strip" data-strip>
-                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Visual design by Kathleen Marie Rose, scrolls sideways">
-                    <figure class="panel glass">
-                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">Creative direction, rivr.social</span></div>
-                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020281-5bia383klfn-rivr-landing.webp" width="1280" height="800" alt="The Rivr landing page, whose look Kathleen directed: white type over dark water" loading="lazy" draggable="false"></div>
-                    </figure>
-                    <div class="panel panel--tall glass">
-                        <div class="slot">
-                            <p class="slot__kind">Social media posts</p>
-                            <p class="slot__note">Artwork to come: designed posts and campaign sets.</p>
-                        </div>
-                    </div>
-                    <div class="panel panel--tall glass">
-                        <div class="slot">
-                            <p class="slot__kind">Social media posts</p>
-                            <p class="slot__note">Artwork to come: event promotion for The Riverside.</p>
-                        </div>
-                    </div>
-                    <div class="panel glass">
-                        <div class="slot">
-                            <p class="slot__kind">Websites</p>
-                            <p class="slot__note">Artwork to come: sites designed in Squarespace and Adobe Portfolio.</p>
-                        </div>
-                    </div>
-                    <div class="panel glass">
-                        <div class="slot">
-                            <p class="slot__kind">Interface design</p>
-                            <p class="slot__note">Artwork to come: screens and components.</p>
-                        </div>
-                    </div>
-                    <div class="panel panel--square glass">
-                        <div class="slot">
-                            <p class="slot__kind">Brand kits</p>
-                            <p class="slot__note">Artwork to come: type, colour and logo systems built in Canva and Adobe.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
 
         <section class="section" aria-labelledby="hire-title">
             <div class="contact glass">
