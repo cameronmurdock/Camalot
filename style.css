@@ -691,6 +691,14 @@ h4 {
     max-width: 82vw;
 }
 
+.panel--phone {
+    width: min(82vw, 260px);
+}
+
+.panel--phone .shot__view img {
+    object-fit: contain;
+}
+
 .panel--square {
     width: var(--strip-height);
     max-width: 82vw;
