@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Cameron Ely-Murdock — Web, SEO &amp; Systems Work</title>
-    <meta name="description" content="Selected work by Cameron Ely-Murdock: the Denver Contact Improv website and its technical SEO, the Rivr platform, a social post planner, a credential protocol, and systems integration.">
+    <meta name="description" content="Selected websites, AI systems, search work and integrations by Cameron Ely-Murdock, including Rivr, Denver Contact Improv and The Riverside.">
     <link rel="canonical" href="https://camalot.me/portfolio">
     <meta name="theme-color" content="#000000">
     <meta property="og:type" content="website">
@@ -71,7 +71,7 @@
                         "@type": "CreativeWork",
                         "name": "The Riverside systems integration",
                         "url": "https://oneapp.gratis/",
-                        "description": "Cloudflare Workers, webhooks and admin API connections joining point of sale, bookings and scheduling into one record.",
+                        "description": "Venue, café and events websites backed by Cloudflare Workers, webhooks and admin API connections.",
                         "creator": { "@id": "https://camalot.me/#person" }
                     }
                 ]
@@ -97,6 +97,7 @@
                 <a href="#planner">Post planner</a>
                 <a href="#ownership">Ownership protocol</a>
                 <a href="#riverside">The Riverside</a>
+                <a href="#ai">AI systems</a>
                 <a href="#seo">Search methods</a>
                 <a href="#experience">Experience</a>
                 <a href="#kat">Visual design</a>
@@ -120,7 +121,7 @@
     <main id="main" class="page">
         <section class="hero hero--page" aria-labelledby="page-title">
             <div class="hero__text">
-                <p class="role">Websites, search, integrations and a platform</p>
+                <p class="role">Websites, AI systems, search and integrations</p>
                 <h1 id="page-title">Portfolio</h1>
                 <p class="lede">I come from operations, so the software gets built around how the work actually runs. Each strip below scrolls sideways.</p>
                 <div class="actions">
@@ -131,7 +132,52 @@
             </div>
         </section>
 
+        <section class="section" id="ai" aria-labelledby="ai-title">
+            <div class="wrap section__head">
+                <h2 id="ai-title">AI Systems &amp; Agent Orchestration</h2>
+                <p>I turn goals into useful workflows, with people in control.</p>
+            </div>
+            <div class="rows">
+                <div class="row">
+                    <p class="row__meta">Plan</p>
+                    <div class="row__main">
+                        <h3>Make the work clear</h3>
+                        <p>Turn goals into AI workflows, break them into tasks, and coordinate agents.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Equip</p>
+                    <div class="row__main">
+                        <h3>Give agents what they need</h3>
+                        <p>Provide the right tools, context and data. Choose models for performance and cost.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Verify</p>
+                    <div class="row__main">
+                        <h3>Keep a person in the loop</h3>
+                        <p>Test results, catch failures, and set guardrails and human checkpoints.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <article class="case" id="dci" aria-labelledby="dci-title">
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="dci-title">Denver Contact Improv</h2>
+                    <p class="case__kind">Website, technical SEO and client-run editing</p>
+                    <p>Michael Bernal teaches Contact Improvisation in Denver. I designed and built his site and its sister site, Art of Living CI: ten pages, a page for each class series, a beginner’s guide, and an FAQ in his own words. Both are static Next.js exports, so they load from a CDN with no server to maintain.</p>
+                    <p>The search work is on every page rather than bolted on: titles and descriptions written from the phrases people type, canonical URLs, structured data for the business, the FAQ and the guide, a sitemap, and sharing cards. The sister site points its canonicals at the main domain so the two never compete. The full list is under <a class="text-link" href="#seo">search methods</a>.</p>
+                    <p>Michael updates the site himself through a private chat I built for him. He previews every change on a staging host, and nothing reaches production until he asks for it.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>Client</dt><dd>Michael Bernal, Denver Contact Improv</dd></div>
+                    <div><dt>My part</dt><dd>Design, build, search, hosting and handoff</dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Tailwind 4</li><li>GitHub Pages</li><li>Claude Code</li></ul></dd></div>
+                    <div><dt>Live</dt><dd><a href="https://denvercontactimprov.com/" rel="noopener">denvercontactimprov.com</a><br><a href="https://artoflivingci.com/" rel="noopener">artoflivingci.com</a></dd></div>
+                </dl>
+            </div>
             <div class="strip" data-strip>
                 <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Denver Contact Improv screens, scrolls sideways">
                     <figure class="panel glass">
@@ -193,24 +239,25 @@
                     </figure>
                 </div>
             </div>
-            <div class="case__body">
-                <div class="case__text">
-                    <h2 id="dci-title">Denver Contact Improv</h2>
-                    <p class="case__kind">Website, technical SEO and client-run editing</p>
-                    <p>Michael Bernal teaches Contact Improvisation in Denver. I designed and built his site and its sister site, Art of Living CI: ten pages, a page for each class series, a beginner’s guide, and an FAQ in his own words. Both are static Next.js exports, so they load from a CDN with no server to maintain.</p>
-                    <p>The search work is on every page rather than bolted on: titles and descriptions written from the phrases people type, canonical URLs, structured data for the business, the FAQ and the guide, a sitemap, and sharing cards. The sister site points its canonicals at the main domain so the two never compete. The full list is under <a class="text-link" href="#seo">search methods</a>.</p>
-                    <p>Michael updates the site himself through a private chat I built for him. He previews every change on a staging host, and nothing reaches production until he asks for it.</p>
-                </div>
-                <dl class="facts glass">
-                    <div><dt>Client</dt><dd>Michael Bernal, Denver Contact Improv</dd></div>
-                    <div><dt>My part</dt><dd>Design, build, search, hosting and handoff</dd></div>
-                    <div><dt>Built with</dt><dd><ul class="tags"><li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Tailwind 4</li><li>GitHub Pages</li><li>Claude Code</li></ul></dd></div>
-                    <div><dt>Live</dt><dd><a href="https://denvercontactimprov.com/" rel="noopener">denvercontactimprov.com</a><br><a href="https://artoflivingci.com/" rel="noopener">artoflivingci.com</a></dd></div>
-                </dl>
-            </div>
+
         </article>
 
         <article class="case" id="rivr" aria-labelledby="rivr-title">
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="rivr-title">Rivr</h2>
+                    <p class="case__kind">A federated coordination platform, and the site that explains it</p>
+                    <p>Rivr is a social coordination network: events, groups, offerings, jobs and a shared map, with governance and a treasury for the groups that need them. I lead its technology, product and infrastructure.</p>
+                    <p>It is federated. A hub connects sovereign person and group instances that keep their own data, and peers trade signed events instead of trusting one central database. An assistant inside the app works through the same permissions as the person it acts for.</p>
+                    <p>The landing site at rivr.social is static HTML that I ported from Squarespace and serve from the same infrastructure. This site is published from my own Rivr instance, which is why the homepage can list live objects from it.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>My part</dt><dd>Technology, product and infrastructure</dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>Next.js 15</li><li>React 19</li><li>TypeScript</li><li>PostgreSQL</li><li>Drizzle</li><li>Stripe</li><li>Matrix</li><li>LiveKit</li><li>Expo</li><li>Docker</li></ul></dd></div>
+                    <div><dt>Live</dt><dd><a href="https://rivr.social/" rel="noopener">rivr.social</a><br><a href="https://app.rivr.social/" rel="noopener">app.rivr.social</a><br><a href="https://rivr.camalot.me/profile/cameron" rel="me noopener">My instance</a></dd></div>
+                    <div><dt>More</dt><dd><a href="../rivr-social.html">Why Rivr is built for use, not feeds</a></dd></div>
+                </dl>
+            </div>
             <div class="strip" data-strip>
                 <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Rivr screens, scrolls sideways">
                     <figure class="panel glass">
@@ -257,24 +304,24 @@
                     </figure>
                 </div>
             </div>
-            <div class="case__body">
-                <div class="case__text">
-                    <h2 id="rivr-title">Rivr</h2>
-                    <p class="case__kind">A federated coordination platform, and the site that explains it</p>
-                    <p>Rivr is a social coordination network: events, groups, offerings, jobs and a shared map, with governance and a treasury for the groups that need them. I lead its technology, product and infrastructure.</p>
-                    <p>It is federated. A hub connects sovereign person and group instances that keep their own data, and peers trade signed events instead of trusting one central database. An assistant inside the app works through the same permissions as the person it acts for.</p>
-                    <p>The landing site at rivr.social is static HTML that I ported from Squarespace and serve from the same infrastructure. This site is published from my own Rivr instance, which is why the homepage can list live objects from it.</p>
-                </div>
-                <dl class="facts glass">
-                    <div><dt>My part</dt><dd>Technology, product and infrastructure</dd></div>
-                    <div><dt>Built with</dt><dd><ul class="tags"><li>Next.js 15</li><li>React 19</li><li>TypeScript</li><li>PostgreSQL</li><li>Drizzle</li><li>Stripe</li><li>Matrix</li><li>LiveKit</li><li>Expo</li><li>Docker</li></ul></dd></div>
-                    <div><dt>Live</dt><dd><a href="https://rivr.social/" rel="noopener">rivr.social</a><br><a href="https://app.rivr.social/" rel="noopener">app.rivr.social</a><br><a href="https://rivr.camalot.me/profile/cameron" rel="me noopener">My instance</a></dd></div>
-                    <div><dt>More</dt><dd><a href="../rivr-social.html">Why Rivr is built for use, not feeds</a></dd></div>
-                </dl>
-            </div>
+
         </article>
 
         <article class="case" id="planner" aria-labelledby="planner-title">
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="planner-title">Social post planner</h2>
+                    <p class="case__kind">Post design, scheduling and delivery, automated</p>
+                    <p>A planner for whoever runs a group’s social accounts. A post starts as a photo and a caption; the planner shows where it will sit on the profile and how the platform will frame it, because a grid that lies about framing is worse than no grid.</p>
+                    <p>Once a time is set, a publishing run delivers the post to each destination and records what happened per channel. A post can land on one platform and fail on another, and the person sees which, along with whether the fix is a new token or a different post.</p>
+                    <p>Each account is reached with a token its owner pastes in. Tokens are encrypted at rest, checked against the platform the moment they are saved, and never written to a log or an error message.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>My part</dt><dd>Design and build, inside Rivr</dd></div>
+                    <div><dt>Delivers to</dt><dd><ul class="tags"><li>Instagram feed, reels, stories</li><li>Facebook pages</li><li>Telegram</li><li>Discord</li><li>Slack</li><li>Rivr feed</li><li>Member newsletter</li></ul></dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>TypeScript</li><li>Meta Graph API</li><li>PostgreSQL</li><li>Next.js</li></ul></dd></div>
+                </dl>
+            </div>
             <div class="strip" data-strip>
                 <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Social post planner, scrolls sideways">
                     <figure class="panel glass">
@@ -341,23 +388,23 @@
                     </figure>
                 </div>
             </div>
-            <div class="case__body">
-                <div class="case__text">
-                    <h2 id="planner-title">Social post planner</h2>
-                    <p class="case__kind">Post design, scheduling and delivery, automated</p>
-                    <p>A planner for whoever runs a group’s social accounts. A post starts as a photo and a caption; the planner shows where it will sit on the profile and how the platform will frame it, because a grid that lies about framing is worse than no grid.</p>
-                    <p>Once a time is set, a publishing run delivers the post to each destination and records what happened per channel. A post can land on one platform and fail on another, and the person sees which, along with whether the fix is a new token or a different post.</p>
-                    <p>Each account is reached with a token its owner pastes in. Tokens are encrypted at rest, checked against the platform the moment they are saved, and never written to a log or an error message.</p>
-                </div>
-                <dl class="facts glass">
-                    <div><dt>My part</dt><dd>Design and build, inside Rivr</dd></div>
-                    <div><dt>Delivers to</dt><dd><ul class="tags"><li>Instagram feed, reels, stories</li><li>Facebook pages</li><li>Telegram</li><li>Discord</li><li>Slack</li><li>Rivr feed</li><li>Member newsletter</li></ul></dd></div>
-                    <div><dt>Built with</dt><dd><ul class="tags"><li>TypeScript</li><li>Meta Graph API</li><li>PostgreSQL</li><li>Next.js</li></ul></dd></div>
-                </dl>
-            </div>
+
         </article>
 
         <article class="case" id="ownership" aria-labelledby="ownership-title">
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="ownership-title">Credentials and account ownership</h2>
+                    <p class="case__kind">A written protocol for who holds the keys</p>
+                    <p>A small site still touches a registrar, DNS, a host, a code repository and usually an AI subscription. If those sit in the developer’s accounts, the client does not own their own website. I write down who owns each one and how it reaches the client before anything is deployed.</p>
+                    <p>The protocol covers where secrets live, how narrowly each credential is scoped, how DNS moves without breaking mail, what to do when something leaks, and the order of the final handoff. The order matters: new credentials are proven to work before the old ones are revoked.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>Used on</dt><dd>Denver Contact Improv and Art of Living CI</dd></div>
+                    <div><dt>Covers</dt><dd><ul class="tags"><li>Domain registrar</li><li>Cloudflare DNS</li><li>Oracle Cloud</li><li>GitHub</li><li>SSH</li><li>AI subscription</li></ul></dd></div>
+                    <div><dt>Principle</dt><dd>The client owns every account. I hold access only while I am working.</dd></div>
+                </dl>
+            </div>
             <div class="strip" data-strip>
                 <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Credential and ownership protocol, scrolls sideways">
                     <div class="panel panel--narrow glass">
@@ -426,24 +473,35 @@ chmod 600 secrets.local/*</code></pre>
                     </div>
                 </div>
             </div>
-            <div class="case__body">
-                <div class="case__text">
-                    <h2 id="ownership-title">Credentials and account ownership</h2>
-                    <p class="case__kind">A written protocol for who holds the keys</p>
-                    <p>A small site still touches a registrar, DNS, a host, a code repository and usually an AI subscription. If those sit in the developer’s accounts, the client does not own their own website. I write down who owns each one and how it reaches the client before anything is deployed.</p>
-                    <p>The protocol covers where secrets live, how narrowly each credential is scoped, how DNS moves without breaking mail, what to do when something leaks, and the order of the final handoff. The order matters: new credentials are proven to work before the old ones are revoked.</p>
-                </div>
-                <dl class="facts glass">
-                    <div><dt>Used on</dt><dd>Denver Contact Improv and Art of Living CI</dd></div>
-                    <div><dt>Covers</dt><dd><ul class="tags"><li>Domain registrar</li><li>Cloudflare DNS</li><li>Oracle Cloud</li><li>GitHub</li><li>SSH</li><li>AI subscription</li></ul></dd></div>
-                    <div><dt>Principle</dt><dd>The client owns every account. I hold access only while I am working.</dd></div>
-                </dl>
-            </div>
+
         </article>
 
         <article class="case" id="riverside" aria-labelledby="riverside-title">
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="riverside-title">The Riverside</h2>
+                    <p class="case__kind">Systems integration, admin APIs and the front ends on top</p>
+                    <p>The Riverside is an events venue in Boulder. Over four years there I integrated point-of-sale, payroll, shift management, product production and venue booking into one connected operational system, replacing disconnected manual tracking.</p>
+                    <p>The backbone is a set of Cloudflare Workers on one domain. Webhooks from the booking and scheduling tools land in the shared record within seconds. A public events site builds itself from that record, sells tickets through Stripe, and writes each sale and guestbook entry back against the event.</p>
+                    <p>I also built much of the current public-facing websites for The Riverside and The Coffee Stand, connecting the venue, café and events experience online.</p>
+                    <p>On top of the data sit the pieces people touch: the events pages, a guestbook, a shift checklist for staff, and Rivertree, an app that turned the venue’s points-for-tasks model into software.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>My part</dt><dd>Operations and systems integration, 2022 to January 2026</dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>Cloudflare Workers</li><li>Notion API</li><li>Stripe</li><li>Clover</li><li>Tripleseat</li><li>Connecteam</li><li>MCP</li><li>TypeScript</li><li>Python</li><li>Next.js</li><li>Supabase</li></ul></dd></div>
+                    <div><dt>Live sites and source</dt><dd><a href="https://boulderriverside.com/" rel="noopener">The Riverside venue</a><br><a href="https://boulderstand.com/" rel="noopener">The Coffee Stand</a><br><a href="https://oneapp.gratis/" rel="noopener">Riverside Events</a><br><a href="https://github.com/cameronmurdock/rivertree-platform" rel="noopener">Rivertree on GitHub</a></dd></div>
+                </dl>
+            </div>
             <div class="strip" data-strip>
                 <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="The Riverside systems, scrolls sideways">
+                    <a class="panel glass" href="https://boulderriverside.com/" rel="noopener" aria-label="Visit The Riverside venue website">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">boulderriverside.com ↗</span></div>
+                        <div class="shot__view"><img src="https://boulderriverside.com/wp-content/uploads/2019/08/home1_0002_Layer-2.jpg" width="1500" height="630" alt="The Riverside venue beside Boulder Creek" loading="lazy" draggable="false"></div>
+                    </a>
+                    <a class="panel glass" href="https://boulderstand.com/" rel="noopener" aria-label="Visit The Coffee Stand website">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">boulderstand.com ↗</span></div>
+                        <div class="shot__view"><img src="https://boulderstand.com/wp-content/uploads/2026/05/coffeestand.webp" width="680" height="510" alt="The Coffee Stand café branding and coffee setting" loading="lazy" draggable="false"></div>
+                    </a>
                     <figure class="panel glass">
                         <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">oneapp.gratis</span></div>
                         <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019829-c573ibg1774-riverside-events.webp" width="1280" height="800" alt="Riverside Events: a grid of upcoming event cards, each with an image, a description and a View Details button" loading="lazy" draggable="false"></div>
@@ -501,20 +559,7 @@ chmod 600 secrets.local/*</code></pre>
                     </div>
                 </div>
             </div>
-            <div class="case__body">
-                <div class="case__text">
-                    <h2 id="riverside-title">The Riverside</h2>
-                    <p class="case__kind">Systems integration, admin APIs and the front ends on top</p>
-                    <p>The Riverside is an events venue in Boulder. Over four years there I integrated point-of-sale, payroll, shift management, product production and venue booking into one connected operational system, replacing disconnected manual tracking.</p>
-                    <p>The backbone is a set of Cloudflare Workers on one domain. Webhooks from the booking and scheduling tools land in the shared record within seconds. A public events site builds itself from that record, sells tickets through Stripe, and writes each sale and guestbook entry back against the event.</p>
-                    <p>On top of the data sit the pieces people touch: the events pages, a guestbook, a shift checklist for staff, and Rivertree, an app that turned the venue’s points-for-tasks model into software.</p>
-                </div>
-                <dl class="facts glass">
-                    <div><dt>My part</dt><dd>Operations and systems integration, 2022 to January 2026</dd></div>
-                    <div><dt>Built with</dt><dd><ul class="tags"><li>Cloudflare Workers</li><li>Notion API</li><li>Stripe</li><li>Clover</li><li>Tripleseat</li><li>Connecteam</li><li>MCP</li><li>TypeScript</li><li>Python</li><li>Next.js</li><li>Supabase</li></ul></dd></div>
-                    <div><dt>Live sites and source</dt><dd><a href="https://boulderriverside.com/" rel="noopener">The Riverside venue</a><br><a href="https://oneapp.gratis/" rel="noopener">Riverside Events</a><br><a href="https://github.com/cameronmurdock/rivertree-platform" rel="noopener">Rivertree on GitHub</a></dd></div>
-                </dl>
-            </div>
+
         </article>
 
         <article class="case" id="oneboulder" aria-labelledby="oneboulder-title">
@@ -534,70 +579,28 @@ chmod 600 secrets.local/*</code></pre>
         <section class="section" id="seo" aria-labelledby="seo-title">
             <div class="wrap section__head">
                 <h2 id="seo-title">Search methods</h2>
-                <p>What I do to a site so that search engines and people can find it. The examples are from Denver Contact Improv, where each of these is live.</p>
+                <p>Clear pages, useful answers and sound technical basics.</p>
             </div>
             <div class="rows">
                 <div class="row">
-                    <p class="row__meta">Titles and descriptions</p>
+                    <p class="row__meta">Page basics</p>
                     <div class="row__main">
-                        <h3>Write each page for the phrase people type</h3>
-                        <p>Every page has its own title and description built from a real search, in the visitor’s words. The jam page is titled “Contact Improv Jam — Weekly Contact Improvisation Jam in Denver”, not “Jam”. One template keeps the brand on every title without repeating it by hand.</p>
+                        <h3>Say what each page is for</h3>
+                        <p>Clear titles, descriptions, headings and local terms.</p>
                     </div>
                 </div>
                 <div class="row">
-                    <p class="row__meta">Structured data</p>
+                    <p class="row__meta">Search structure</p>
                     <div class="row__main">
-                        <h3>Tell the crawler what the page is</h3>
-                        <p>JSON-LD on every page type: LocalBusiness and WebSite across the site, FAQPage on the questions page so answers can appear in results, and Article with a named author on the guide.</p>
+                        <h3>Make pages easy to find</h3>
+                        <p>Structured data, canonical URLs and a sitemap.</p>
                     </div>
                 </div>
                 <div class="row">
-                    <p class="row__meta">Local search</p>
+                    <p class="row__meta">Useful content</p>
                     <div class="row__main">
-                        <h3>Say where, everywhere it counts</h3>
-                        <p>The city is in the business markup as an address and a service area, in the headings, and in the copy: a homepage section is titled “Contact Improvisation Classes in Denver”. The contact page asks for a Google review, and every social link points at one handle so the profiles agree.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="row__meta">Canonicals and duplicates</p>
-                    <div class="row__main">
-                        <h3>One address per page, one site per topic</h3>
-                        <p>Each page declares its canonical URL. The sister site shares most of its content, so its pages name the main domain as canonical and ranking consolidates there. A commonly mistyped address redirects to the right page and is marked not to be indexed.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="row__meta">Crawling</p>
-                    <div class="row__main">
-                        <h3>Hand over the map</h3>
-                        <p>A sitemap lists every page with its priority and how often it changes, robots.txt points to it, and the robots directives allow large image previews and full-length snippets.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="row__meta">Content</p>
-                    <div class="row__main">
-                        <h3>Answer the question before the class does</h3>
-                        <p>A long beginner’s guide, “What is Contact Improvisation?”, and an FAQ in the teacher’s own words give a newcomer’s search somewhere to land, and link on to the classes.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="row__meta">Sharing</p>
-                    <div class="row__main">
-                        <h3>Make the link look right when it is shared</h3>
-                        <p>Open Graph and large-image cards on every page, with a described image, so a link pasted into a message shows a photo and a sentence instead of a bare URL.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="row__meta">Accessibility and speed</p>
-                    <div class="row__main">
-                        <h3>Describe every image, ship static files</h3>
-                        <p>Every image carries alt text that says what is in it. Pages are pre-rendered and served from a CDN, and fonts are bundled with the build instead of fetched from a third party.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <p class="row__meta">On this site</p>
-                    <div class="row__main">
-                        <h3>The same methods, applied here</h3>
-                        <p>Person, ProfilePage and breadcrumb markup, one heading per page, canonical URLs, a sitemap, described images under 100 KB with fixed dimensions so nothing shifts as they load, and no script the page has to wait for.</p>
+                        <h3>Answer real questions</h3>
+                        <p>Helpful guides and FAQs, fast pages, accessible images and good sharing previews.</p>
                     </div>
                 </div>
             </div>
@@ -679,6 +682,17 @@ chmod 600 secrets.local/*</code></pre>
                 <h2 id="kat-title">Visual design by Kathleen Marie Rose</h2>
                 <p>Kat is the visual designer I bring in for brand, social and interface work. She leads vision, creative direction and culture at Rivr, and photographs as <a class="text-link" href="https://www.truetoessence.com/" rel="noopener">True to Essence</a>. She sets the look; I build it and automate what repeats.</p>
             </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <p class="case__kind">Social media, websites, interfaces and brand kits</p>
+                    <p>A brand kit becomes a set of templates, the templates become scheduled posts, and the person running the account approves instead of assembling. That is the join between her work and mine.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>Works in</dt><dd><ul class="tags"><li>Adobe</li><li>Adobe Portfolio</li><li>Canva</li><li>Squarespace</li><li>Photography</li></ul></dd></div>
+                    <div><dt>Together</dt><dd>Social media management and its automation</dd></div>
+                    <div><dt>Her studio</dt><dd><a href="https://www.truetoessence.com/" rel="noopener">truetoessence.com</a></dd></div>
+                </dl>
+            </div>
             <div class="strip" data-strip>
                 <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Visual design by Kathleen Marie Rose, scrolls sideways">
                     <figure class="panel glass">
@@ -717,17 +731,7 @@ chmod 600 secrets.local/*</code></pre>
                     </div>
                 </div>
             </div>
-            <div class="case__body">
-                <div class="case__text">
-                    <p class="case__kind">Social media, websites, interfaces and brand kits</p>
-                    <p>A brand kit becomes a set of templates, the templates become scheduled posts, and the person running the account approves instead of assembling. That is the join between her work and mine.</p>
-                </div>
-                <dl class="facts glass">
-                    <div><dt>Works in</dt><dd><ul class="tags"><li>Adobe</li><li>Adobe Portfolio</li><li>Canva</li><li>Squarespace</li><li>Photography</li></ul></dd></div>
-                    <div><dt>Together</dt><dd>Social media management and its automation</dd></div>
-                    <div><dt>Her studio</dt><dd><a href="https://www.truetoessence.com/" rel="noopener">truetoessence.com</a></dd></div>
-                </dl>
-            </div>
+
         </section>
 
         <section class="section" aria-labelledby="hire-title">

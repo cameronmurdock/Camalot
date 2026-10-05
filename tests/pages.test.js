@@ -142,6 +142,18 @@ test("sitemap.txt lists exactly the canonical URL of every page", () => {
     assert.deepEqual(listed, canonicals, "sitemap.txt and the pages' canonical URLs differ");
 });
 
+test("portfolio puts project details before visuals and links both Riverside sites", () => {
+    const html = read("portfolio/index.html");
+    for (const id of ["dci", "rivr", "planner", "ownership", "riverside", "kat"]) {
+        const start = html.indexOf(`id="${id}"`);
+        const end = html.indexOf(id === "kat" ? "</section>" : "</article>", start);
+        const section = html.slice(start, end);
+        assert.ok(section.indexOf('class="case__body"') < section.indexOf('class="strip"'), `${id}: details should precede visuals`);
+    }
+    assert.match(html, /href="https:\/\/boulderriverside\.com\/"/);
+    assert.match(html, /href="https:\/\/boulderstand\.com\/"/);
+});
+
 test("robots.txt allows crawling and points at the sitemap", () => {
     const robots = read("robots.txt");
     assert.match(robots, /^User-agent: \*$/m, "robots.txt should address all crawlers");

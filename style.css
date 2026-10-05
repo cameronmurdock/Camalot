@@ -915,10 +915,15 @@ a.panel:hover {
     transform: rotate(45deg);
 }
 
-/* ── Case: the caption and detail beneath a filmstrip ──────────────────── */
+/* ── Case: project details followed by a filmstrip ─────────────────────── */
 
 .case {
     padding-top: clamp(64px, 8vw, 112px);
+}
+
+.case > .strip,
+#kat > .strip {
+    margin-top: 30px;
 }
 
 .case__body {
@@ -927,7 +932,6 @@ a.panel:hover {
     gap: clamp(24px, 4vw, 64px);
     align-items: start;
     max-width: 78rem;
-    margin-top: 30px;
     padding-right: var(--gutter);
 }
 
