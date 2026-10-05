@@ -39,9 +39,9 @@
 
         const link = document.createElement("a");
         link.className = "projection-link";
-        link.href = `https://rivr.camalot.me/api/universal-manifest/${encodeURIComponent(manifestKind(item))}/${encodeURIComponent(item.id)}`;
+        link.href = `https://rivr.camalot.me/objects/${encodeURIComponent(item.id)}`;
         link.rel = "alternate noopener";
-        link.textContent = "Canonical object ↗";
+        link.textContent = "View on Rivr ↗";
 
         row.append(meta, body, link);
         return row;

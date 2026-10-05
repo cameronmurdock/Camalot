@@ -3,106 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rivr.Social | Cameron Ely-Murdock</title>
+    <title>Rivr.Social | A Coordination Platform Built for Use, Not Feeds</title>
+    <meta name="description" content="Rivr is a coordination system for groups where responsibility, resources and trust matter: explicit people, groups, roles, tasks, events, resources and permissions. Built by Cameron Ely-Murdock.">
+    <link rel="canonical" href="https://camalot.me/rivr-social.html">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cameron Ely-Murdock">
+    <meta property="og:title" content="Rivr.Social — built for use, not feeds">
+    <meta property="og:description" content="A coordination system built to support groups where responsibility, resources, and trust actually matter.">
+    <meta property="og:url" content="https://camalot.me/rivr-social.html">
+    <meta property="og:image" content="https://s3.camalot.me/rivr-uploads/uploads/1790793019733-zqjydib38vb-portrait.webp">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='42' fill='%23f4f6f8'%3EC%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&amp;family=Inter:wght@400;500;600&amp;display=swap">
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://camalot.me/" },
+                    { "@type": "ListItem", "position": 2, "name": "Rivr", "item": "https://camalot.me/rivr-social.html" }
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
-    <nav>
-        <div class="container nav-container">
-            <a href="index.html" class="logo">Cameron Ely-Murdock</a>
-            <ul class="nav-menu">
-                <li><a href="rivr-social.html" class="active">Rivr</a></li>
-                <li><a href="offerings.html">Offerings</a></li>
-                <li><a href="writing.html">Writing</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-subtitle">Project</span>
-                <h1>Rivr.Social</h1>
-                <p style="font-size: 1.5rem; color: #fff; opacity: 0.9;">A coordination system built to support groups where responsibility, resources, and trust actually matter.</p>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="fog" aria-hidden="true"></div>
+    <header class="side glass glass--chrome">
+        <a class="brand" href="index.html">
+            <span class="brand__mark">Cameron Ely-Murdock</span>
+            <span class="brand__name">Systems designer, Boulder</span>
+        </a>
+        <nav class="nav" aria-label="Site">
+            <a href="index.html">Home</a>
+            <a href="portfolio">Portfolio</a>
+            <a href="rivr-social.html" aria-current="page">Rivr</a>
+            <a href="offerings.html">Offerings</a>
+            <a class="nav__extra" href="writing.html">Writing</a>
+            <a class="nav__extra" href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="side__foot">
+            <div class="icons">
+                <a class="icon-btn glass" href="https://github.com/cameronmurdock" rel="me noopener" aria-label="Cameron on GitHub"><span class="icon icon--github" aria-hidden="true"></span></a>
+                <a class="icon-btn glass" href="https://www.linkedin.com/in/cameron-murdock-a997a117" rel="me noopener" aria-label="Cameron on LinkedIn"><span class="icon icon--linkedin" aria-hidden="true"></span></a>
+                <a class="icon-btn glass" href="mailto:murdock.cameron@gmail.com" aria-label="Email Cameron"><span class="icon icon--mail" aria-hidden="true"></span></a>
             </div>
+            <p class="side__place">Boulder, Colorado</p>
         </div>
     </header>
 
-    <section>
-        <div class="container">
-            <div class="editorial-grid">
-                <div>
-                    <h2>The Concept</h2>
-                </div>
-                <div>
-                    <p style="font-size: 1.25rem; color: #fff;">
-                        Rivr is built for use, not feeds.
-                    </p>
-                    <p>
-                        It treats community as operations—not content. The core objects are explicit: people, groups, roles, tasks, events, resources, and permissions. The aim is to reduce the hidden labor of organizing, and make collaboration easier to sustain.
-                    </p>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
-                        <div>
-                            <p style="margin-bottom: 1rem; color: #fff;">What it’s not:</p>
-                            <ul style="list-style: none;">
-                                <li style="margin-bottom: 0.5rem;">— a follower economy</li>
-                                <li style="margin-bottom: 0.5rem;">— a performance stage</li>
-                                <li style="margin-bottom: 0.5rem;">— an engagement machine</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <p style="margin-bottom: 1rem; color: #fff;">What it is:</p>
-                            <ul style="list-style: none;">
-                                <li style="margin-bottom: 0.5rem;">— a structured environment for coordination</li>
-                                <li style="margin-bottom: 0.5rem;">— transparent participation history</li>
-                                <li style="margin-bottom: 0.5rem;">— support for shared resource flows</li>
-                            </ul>
-                        </div>
-                    </div>
+    <main id="main" class="page">
+        <section class="hero hero--page" aria-labelledby="page-title">
+            <div class="hero__text">
+                <p class="role">Project</p>
+                <h1 id="page-title">Rivr.Social</h1>
+                <p class="lede">A coordination system built to support groups where responsibility, resources, and trust actually matter.</p>
+                <div class="actions">
+                    <a class="btn btn--solid" href="https://rivr.social/" rel="noopener">Visit rivr.social</a>
+                    <a class="btn glass" href="https://app.rivr.social/" rel="noopener">Open the app</a>
+                    <a class="btn glass" href="portfolio#rivr">How it’s built</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section style="background: #0d0d0d;">
-        <div class="container">
-            <h2>Core Principles</h2>
-            <div class="editorial-grid" style="margin-top: 4rem;">
-                <div>
+        <section class="section" aria-labelledby="concept-title">
+            <div class="wrap section__head">
+                <h2 id="concept-title">The concept</h2>
+            </div>
+            <div class="wrap prose">
+                <p class="lede">Rivr is built for use, not feeds.</p>
+                <p>It treats community as operations — not content. The core objects are explicit: people, groups, roles, tasks, events, resources, and permissions. The aim is to reduce the hidden labor of organizing, and make collaboration easier to sustain.</p>
+                <p class="bright">What it’s not:</p>
+                <ul>
+                    <li>a follower economy</li>
+                    <li>a performance stage</li>
+                    <li>an engagement machine</li>
+                </ul>
+                <p class="bright">What it is:</p>
+                <ul>
+                    <li>a structured environment for coordination</li>
+                    <li>transparent participation history</li>
+                    <li>support for shared resource flows</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="principles-title">
+            <div class="wrap section__head">
+                <h2 id="principles-title">Core principles</h2>
+            </div>
+            <div class="cards">
+                <div class="card glass">
                     <h3>Local Sovereignty</h3>
                     <p>Communities control their data and structure. Portability and stewardship are design requirements.</p>
                 </div>
-                <div>
+                <div class="card glass">
                     <h3>Human Scale</h3>
                     <p>The system holds complexity. The interface stays readable.</p>
                 </div>
-                <div>
+                <div class="card glass">
                     <h3>Interoperability</h3>
                     <p>Designed to integrate with other systems without flattening meaning.</p>
                 </div>
-                <div>
+                <div class="card glass">
                     <h3>Durability</h3>
                     <p>Built to be maintained, not constantly reinvented.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <div class="container">
-            <div class="editorial-grid">
-                <div>
-                    <div class="logo" style="font-size: 1rem;">Boulder, CO</div>
-                    <a href="mailto:murdock.cameron@gmail.com" style="display: block; margin-top: 0.5rem;">murdock.cameron@gmail.com</a>
-                </div>
-                <div style="display: flex; gap: 2rem;">
-                    <a href="https://github.com/cameronmurdock">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        <footer class="foot">
+            <p>Cameron Ely-Murdock, Boulder, Colorado.</p>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="portfolio">Portfolio</a></li>
+                <li><a href="offerings.html">Offerings</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://github.com/cameronmurdock" rel="me noopener">GitHub</a></li>
+            </ul>
+        </footer>
+    </main>
+
+    <script src="site.js" defer></script>
 </body>
 </html>

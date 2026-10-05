@@ -1,289 +1,1393 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500&display=swap');
+/*
+ * camalot.me — Rivr liquid glass on a black theme.
+ *
+ * The glass layers (effect / tint / shine), the frosted chrome blur and the
+ * six-layer "crystalline" background follow Rivr's packages/ui/src/hub/hub.css.
+ * Only the pigment changes: Rivr's deep teal becomes neutral smoke on black.
+ * Rivr's SVG displacement warp is left out: over a dark backdrop it paints
+ * coloured banding instead of refraction.
+ */
 
 :root {
-    --bg-color: #080808; /* Soft, deep black */
-    --text-primary: #e0e0e0; /* Soft white */
-    --text-secondary: #9ca3af; /* Muted grey */
-    --accent-color: #ffffff; /* Pure white for interaction */
-    
-    --font-display: 'Cormorant Garamond', serif;
-    --font-body: 'Manrope', sans-serif;
-    
-    --container-width: 1200px;
-    --nav-height: 100px;
+    --black: #000000;
+    --graphite: #101114;
+    --white: #f4f6f8;
+    --silver: #b9c0ca;
+    --dim: #868e99;
+
+    --glass-fill: rgba(255, 255, 255, 0.05);
+    --glass-fill-strong: rgba(255, 255, 255, 0.09);
+    --glass-line: rgba(255, 255, 255, 0.10);
+    --glass-line-strong: rgba(255, 255, 255, 0.22);
+    --glass-tint: rgba(255, 255, 255, 0.05);
+    --glass-shine-light: rgba(255, 255, 255, 0.16);
+    --glass-shine-dark: rgba(255, 255, 255, 0.04);
+    --glass-blur: 3px;
+    --chrome-blur: 18px;
+    --chrome-saturate: 130%;
+    --chrome-fill: rgba(8, 9, 10, 0.62);
+
+    --radius: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-pill: 999px;
+
+    --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --step--1: 0.8125rem;
+    --step-0: 1rem;
+    --step-1: 1.1875rem;
+    --step-2: 1.5rem;
+    --step-3: 2.125rem;
+    --step-4: clamp(2.5rem, 4.4vw, 3.5rem);
+    --step-5: clamp(3.25rem, 8.2vw, 6.5rem);
+
+    --side-width: 264px;
+    --side-inset: 16px;
+    --gutter: clamp(20px, 4.5vw, 64px);
+    --measure: 44rem;
+    --section-gap: clamp(88px, 11vw, 152px);
+    --strip-height: 440px;
+    --dock-height: 60px;
+    --chrome-layer: 40;
 }
 
-/* Reset & Base */
-* {
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 32px;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    line-height: 1.7;
-    font-size: 18px;
-    font-weight: 300;
+    margin: 0;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-ui);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
 
-/* Typography */
-h1, h2, h3 {
-    font-family: var(--font-display);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--text-primary);
+::selection {
+    background: var(--white);
+    color: var(--black);
 }
 
-h1 {
-    font-size: clamp(4rem, 12vw, 9rem);
-    letter-spacing: -0.02em;
-    margin-bottom: 2rem;
-    font-style: italic;
+img,
+svg {
+    display: block;
+    max-width: 100%;
 }
 
-h2 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: 3rem;
-    font-weight: 300;
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure,
+pre {
+    margin: 0;
 }
 
-h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-p {
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    max-width: 65ch;
-}
-
-a {
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-}
-
-a:hover {
-    opacity: 0.7;
-}
-
-/* Layout Utilities */
-.container {
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
-section {
-    padding: 10rem 0;
-}
-
-/* Navigation - Minimal & Clean */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--nav-height);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(to bottom, var(--bg-color) 0%, transparent 100%);
-}
-
-.nav-container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
-
-.logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: 600;
-}
-
-.nav-menu {
-    display: flex;
-    gap: 3rem;
+ul,
+ol {
+    padding: 0;
     list-style: none;
 }
 
-.nav-menu a {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--white);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.skip {
+    position: absolute;
+    left: 16px;
+    top: -80px;
+    z-index: 60;
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    background: var(--white);
+    color: var(--black);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.skip:focus {
+    top: 16px;
+}
+
+/* ── Crystalline background, black pigment ─────────────────────────────── */
+
+.fog {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(2px);
+    background:
+        radial-gradient(ellipse 60% 50% at 75% 18%, rgba(214, 220, 228, 0.26) 0%, rgba(214, 220, 228, 0) 65%),
+        radial-gradient(ellipse 50% 40% at 30% 35%, rgba(150, 158, 170, 0.20) 0%, rgba(150, 158, 170, 0) 70%),
+        radial-gradient(ellipse 45% 35% at 70% 75%, rgba(226, 230, 236, 0.14) 0%, rgba(226, 230, 236, 0) 70%),
+        radial-gradient(ellipse 40% 35% at 18% 78%, rgba(84, 90, 100, 0.40) 0%, rgba(84, 90, 100, 0) 70%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.62) 100%),
+        linear-gradient(180deg, #040405 0%, var(--graphite) 45%, #050506 100%);
+}
+
+/* ── Liquid glass ──────────────────────────────────────────────────────── */
+
+.glass {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid var(--glass-line);
+    border-radius: var(--radius-xl);
+    background: var(--glass-fill);
+}
+
+.glass::before,
+.glass::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.glass::before {
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+}
+
+.glass::after {
+    background: var(--glass-tint);
+    box-shadow:
+        inset 0.5px 0.5px 0.5px 0 var(--glass-shine-light),
+        inset -0.5px -0.5px 0.5px 0 var(--glass-shine-dark);
+}
+
+.glass--chrome {
+    background: var(--chrome-fill);
+}
+
+.glass--chrome::before {
+    -webkit-backdrop-filter: blur(var(--chrome-blur)) saturate(var(--chrome-saturate));
+    backdrop-filter: blur(var(--chrome-blur)) saturate(var(--chrome-saturate));
+}
+
+/* ── Type ──────────────────────────────────────────────────────────────── */
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-display);
     font-weight: 400;
-    opacity: 0.6;
+    letter-spacing: -0.015em;
+    line-height: 1.04;
+    text-wrap: balance;
 }
 
-.nav-menu a.active,
-.nav-menu a:hover {
-    opacity: 1;
+h1 {
+    font-size: var(--step-5);
 }
 
-/* Hero Section - Majestic */
+h2 {
+    font-size: var(--step-4);
+}
+
+h3 {
+    font-size: var(--step-3);
+    line-height: 1.1;
+}
+
+h4 {
+    font-size: var(--step-0);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.lede {
+    font-size: var(--step-2);
+    line-height: 1.4;
+    color: var(--white);
+    text-wrap: pretty;
+}
+
+.role {
+    font-size: var(--step-1);
+    color: var(--silver);
+}
+
+.prose {
+    max-width: var(--measure);
+}
+
+.prose > * + * {
+    margin-top: 1.15em;
+}
+
+.prose p,
+.prose li {
+    color: var(--silver);
+    text-wrap: pretty;
+}
+
+.prose strong,
+.prose .bright {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.prose ul {
+    display: grid;
+    gap: 0.45em;
+}
+
+.prose ul li {
+    position: relative;
+    padding-left: 1.4em;
+}
+
+.prose ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.82em;
+    width: 0.7em;
+    height: 1px;
+    background: var(--dim);
+}
+
+.prose a,
+.text-link {
+    color: var(--white);
+    text-decoration: underline;
+    text-decoration-color: var(--glass-line-strong);
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
+}
+
+.prose a:hover,
+.text-link:hover {
+    text-decoration-color: var(--white);
+}
+
+.note {
+    font-size: var(--step--1);
+    color: var(--dim);
+}
+
+/* ── Shell: glass sidebar + content ────────────────────────────────────── */
+
+.side {
+    position: fixed;
+    top: var(--side-inset);
+    bottom: var(--side-inset);
+    left: var(--side-inset);
+    z-index: var(--chrome-layer);
+    width: var(--side-width);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 26px 18px 18px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.side::-webkit-scrollbar {
+    display: none;
+}
+
+.brand {
+    display: block;
+    padding: 0 8px;
+    text-decoration: none;
+}
+
+.brand__mark {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+.brand__name {
+    display: block;
+    margin-top: 8px;
+    font-size: var(--step--1);
+    color: var(--silver);
+}
+
+.nav {
+    display: grid;
+    gap: 2px;
+}
+
+.nav a {
+    display: block;
+    padding: 8px 10px;
+    border-radius: var(--radius);
+    color: var(--silver);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background: var(--glass-fill);
+    color: var(--white);
+}
+
+.nav a[aria-current="page"] {
+    background: var(--glass-fill-strong);
+    color: var(--white);
+    box-shadow: inset 0.5px 0.5px 0.5px 0 var(--glass-shine-light);
+}
+
+/* Sections of the page being read, under the active page link. */
+.spy {
+    display: grid;
+    gap: 0;
+    margin: 4px 0 8px 14px;
+    border-left: 1px solid var(--glass-line);
+}
+
+.spy a {
+    margin-left: -1px;
+    padding: 5px 12px;
+    border-left: 1px solid transparent;
+    border-radius: 0;
+    font-size: var(--step--1);
+    font-weight: 400;
+    color: var(--dim);
+}
+
+.spy a:hover {
+    background: none;
+}
+
+.spy a.is-current {
+    border-left-color: var(--white);
+    color: var(--white);
+}
+
+.side__foot {
+    margin-top: auto;
+    display: grid;
+    gap: 14px;
+    padding: 0 8px;
+}
+
+.side__place {
+    font-size: var(--step--1);
+    color: var(--dim);
+}
+
+.icons {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    color: var(--silver);
+}
+
+.icon-btn:hover {
+    color: var(--white);
+    border-color: var(--glass-line-strong);
+}
+
+/* Icons are masks so they take the colour of the link that holds them. */
+.icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: currentColor;
+    -webkit-mask: var(--icon) center / contain no-repeat;
+    mask: var(--icon) center / contain no-repeat;
+}
+
+.icon--github {
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z'/%3E%3C/svg%3E");
+}
+
+.icon--linkedin {
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='4.2' cy='4.2' r='2.4'/%3E%3Cpath d='M2 8.6h4.4V22H2zM9.4 8.6h4.2v1.9c.7-1.3 2.2-2.3 4.3-2.3 4 0 4.9 2.6 4.9 6.3V22h-4.4v-6.8c0-1.8-.6-3-2.2-3-1.7 0-2.4 1.2-2.4 3V22H9.4z'/%3E%3C/svg%3E");
+}
+
+.icon--mail {
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1.6 2 7.4 5.6L19.4 7H4.6ZM20 8.3l-8 6-8-6V17h16V8.3Z'/%3E%3C/svg%3E");
+}
+
+.page {
+    margin-left: calc(var(--side-width) + var(--side-inset));
+    padding-left: var(--gutter);
+    min-width: 0;
+}
+
+.wrap {
+    max-width: calc(var(--measure) + var(--gutter));
+    padding-right: var(--gutter);
+}
+
+.section {
+    padding-top: var(--section-gap);
+}
+
+.section__head {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 40px;
+}
+
+.section__head p {
+    max-width: var(--measure);
+    color: var(--silver);
+}
+
+/* ── Hero ──────────────────────────────────────────────────────────────── */
+
 .hero {
-    min-height: 90vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+    min-height: min(100vh, 880px);
+    padding: 72px var(--gutter) 0 0;
+    max-width: 82rem;
+}
+
+.hero--page {
+    display: block;
+    min-height: 0;
+    padding-top: clamp(96px, 14vh, 152px);
+}
+
+.hero__text {
+    display: grid;
+    gap: 22px;
+}
+
+.hero__text .lede {
+    max-width: 36rem;
+}
+
+.hero__portrait {
+    padding: 8px;
+}
+
+.hero__portrait img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: calc(var(--radius-xl) - 4px);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: var(--radius-pill);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.btn:hover {
+    border-color: var(--glass-line-strong);
+    background: var(--glass-fill-strong);
+}
+
+.btn--solid {
+    border: 1px solid var(--white);
+    background: var(--white);
+    color: var(--black);
+    font-weight: 600;
+}
+
+.btn--solid:hover {
+    background: var(--silver);
+    border-color: var(--silver);
+}
+
+/* ── Filmstrip: a row of glass panels that scrolls sideways ────────────── */
+
+.strip {
+    position: relative;
+}
+
+.strip__track {
+    display: flex;
+    gap: 18px;
+    padding: 6px var(--gutter) 22px 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.strip__track::-webkit-scrollbar {
+    display: none;
+}
+
+.strip__track.is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    user-select: none;
+}
+
+.strip__track.is-dragging a,
+.strip__track.is-dragging img {
+    pointer-events: none;
+}
+
+.strip__bar {
     display: flex;
     align-items: center;
-    padding-top: var(--nav-height);
+    gap: 16px;
+    padding-right: var(--gutter);
+    max-width: 78rem;
 }
 
-.hero-content {
-    max-width: 900px;
+.strip__hint {
+    font-size: var(--step--1);
+    color: var(--dim);
 }
 
-.hero-subtitle {
+.strip__progress {
+    flex: 1;
+    height: 1px;
+    background: var(--glass-line);
+}
+
+.strip__progress span {
     display: block;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--text-secondary);
-    margin-bottom: 1rem;
-    opacity: 0.8;
-}
-
-/* Editorial Grid */
-.editorial-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-}
-
-.divider {
     width: 100%;
     height: 1px;
-    background: rgba(255,255,255,0.1);
-    margin: 2rem 0;
+    background: var(--white);
+    transform: scaleX(var(--progress, 0.2));
+    transform-origin: left center;
 }
 
-/* Works List */
-.work-item {
-    padding: 3rem 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    transition: border-color 0.3s ease;
+.strip__nav {
+    display: flex;
+    gap: 8px;
 }
 
-.work-item:hover {
-    border-color: rgba(255,255,255,0.4);
-}
-
-.work-item a {
+.strip__btn {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
-    align-items: baseline;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border-radius: var(--radius-pill);
+    color: var(--white);
+    font: inherit;
+    cursor: pointer;
 }
 
-.work-meta {
+.strip__btn:hover:not(:disabled) {
+    background: var(--glass-fill-strong);
+    border-color: var(--glass-line-strong);
+}
+
+.strip__btn:disabled {
+    color: var(--dim);
+    cursor: default;
+}
+
+.strip__btn .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.strip.is-static .strip__bar {
+    display: none;
+}
+
+.panel {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: min(82vw, 680px);
+    height: var(--strip-height);
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.panel--narrow {
+    width: min(82vw, 400px);
+}
+
+.panel--tall {
+    width: calc(var(--strip-height) * 0.8);
+    max-width: 82vw;
+}
+
+.panel--square {
+    width: var(--strip-height);
+    max-width: 82vw;
+}
+
+a.panel {
+    color: inherit;
+    text-decoration: none;
+}
+
+a.panel:hover {
+    border-color: var(--glass-line-strong);
+}
+
+.panel__caption {
+    display: grid;
+    gap: 6px;
+    padding: 16px 20px 20px;
+    border-top: 1px solid var(--glass-line);
+}
+
+.panel__caption h3 {
+    font-size: var(--step-2);
+}
+
+.panel__caption p {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--silver);
+}
+
+/* A browser-window frame around a screenshot. */
+.shot__bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--glass-line);
+    font-size: var(--step--1);
+    color: var(--silver);
+}
+
+.shot__dots {
+    display: flex;
+    gap: 5px;
+}
+
+.shot__dots i {
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--glass-line-strong);
+    border-radius: 50%;
+}
+
+.shot__url {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.shot__view {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+.shot__view img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.icon--prev {
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 3 5 8l5 5'/%3E%3C/svg%3E");
+}
+
+.icon--next {
+    --icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 3 5 5-5 5'/%3E%3C/svg%3E");
+}
+
+/* A slot whose artwork has not been supplied yet. */
+.slot {
+    flex: 1;
+    display: grid;
+    place-content: center;
+    gap: 8px;
+    margin: 12px;
+    padding: 24px;
+    border: 1px dashed var(--glass-line-strong);
+    border-radius: calc(var(--radius-xl) - 4px);
+    text-align: center;
+}
+
+.shot__view .slot {
+    position: absolute;
+    inset: 12px;
+    margin: 0;
+}
+
+.hero__portrait .slot {
+    aspect-ratio: 4 / 5;
+    margin: 0;
+}
+
+.slot__kind {
     font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--text-secondary);
+    font-size: var(--step-2);
+    line-height: 1.15;
 }
 
-.work-title {
-    font-family: var(--font-body);
-    font-size: 2rem;
-    font-weight: 300;
+.slot__note {
+    max-width: 22rem;
+    font-size: var(--step--1);
+    color: var(--dim);
 }
 
-.work-desc {
-    margin-top: 1rem;
-    font-size: 1rem;
-    max-width: 500px;
+/* A panel of text: a fact sheet, a method list or a code specimen. */
+.spec {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 26px;
+    overflow: hidden;
 }
 
-/* Permission-filtered objects projected from the sovereign Rivr instance. */
-.projection-heading {
+.spec h4 {
+    color: var(--white);
+}
+
+.spec p,
+.spec li {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--silver);
+}
+
+.spec ul {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6rem;
-    align-items: start;
-    margin: 4rem 0 2rem;
+    gap: 9px;
 }
 
-.projection-heading h2 {
-    margin-bottom: 0;
+.spec li {
+    position: relative;
+    padding-left: 1.2em;
 }
+
+.spec li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.78em;
+    width: 0.6em;
+    height: 1px;
+    background: var(--dim);
+}
+
+.spec ol {
+    display: grid;
+    gap: 8px;
+    padding-left: 1.35em;
+    list-style: decimal;
+}
+
+.spec ol li {
+    padding-left: 0.2em;
+}
+
+.spec ol li::before {
+    content: none;
+}
+
+.spec ol li::marker {
+    color: var(--dim);
+}
+
+.spec pre {
+    flex: 1;
+    min-height: 0;
+    padding: 14px 16px;
+    overflow: auto;
+    border: 1px solid var(--glass-line);
+    border-radius: var(--radius);
+    background: rgba(0, 0, 0, 0.45);
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--silver);
+    white-space: pre;
+    tab-size: 2;
+}
+
+.spec__figure {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+}
+
+/* A left-to-right flow: sources, the thing that moves the data, destinations. */
+.flow {
+    flex: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr);
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+    min-height: 0;
+}
+
+.flow__col {
+    display: grid;
+    gap: 8px;
+}
+
+.flow__node {
+    padding: 9px 12px;
+    border: 1px solid var(--glass-line);
+    border-radius: var(--radius);
+    background: var(--glass-fill);
+    font-size: var(--step--1);
+    line-height: 1.35;
+    color: var(--white);
+}
+
+.flow__node small {
+    display: block;
+    font-size: 0.6875rem;
+    color: var(--dim);
+}
+
+.flow__arrow {
+    position: relative;
+    height: 1px;
+    background: var(--glass-line-strong);
+}
+
+.flow__arrow::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -3px;
+    width: 7px;
+    height: 7px;
+    border-top: 1px solid var(--silver);
+    border-right: 1px solid var(--silver);
+    transform: rotate(45deg);
+}
+
+/* ── Case: the caption and detail beneath a filmstrip ──────────────────── */
+
+.case {
+    padding-top: clamp(64px, 8vw, 112px);
+}
+
+.case__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: start;
+    max-width: 78rem;
+    margin-top: 30px;
+    padding-right: var(--gutter);
+}
+
+.case__text {
+    display: grid;
+    gap: 14px;
+    max-width: var(--measure);
+}
+
+.case__kind {
+    color: var(--silver);
+    font-size: var(--step-0);
+}
+
+.case__text p {
+    color: var(--silver);
+    text-wrap: pretty;
+}
+
+.facts {
+    display: grid;
+    gap: 16px;
+    padding: 20px 22px;
+    font-size: 0.9375rem;
+}
+
+.facts dt {
+    margin-bottom: 4px;
+    font-size: var(--step--1);
+    color: var(--dim);
+}
+
+.facts dd {
+    color: var(--white);
+    line-height: 1.5;
+}
+
+.facts a {
+    text-decoration-color: var(--glass-line-strong);
+    text-underline-offset: 0.2em;
+}
+
+.facts a:hover {
+    text-decoration-color: var(--white);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tags li {
+    padding: 3px 11px;
+    border: 1px solid var(--glass-line);
+    border-radius: var(--radius-pill);
+    background: var(--glass-fill);
+    font-size: var(--step--1);
+    color: var(--silver);
+}
+
+/* ── Rows: experience, methods, offerings, projected objects ───────────── */
+
+.rows {
+    max-width: 78rem;
+    padding-right: var(--gutter);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 8px 32px;
+    padding: 26px 0;
+    border-top: 1px solid var(--glass-line);
+}
+
+.row:last-child {
+    border-bottom: 1px solid var(--glass-line);
+}
+
+.row__meta {
+    padding-top: 3px;
+    font-size: var(--step--1);
+    color: var(--dim);
+}
+
+.row__main {
+    display: grid;
+    gap: 10px;
+    max-width: var(--measure);
+}
+
+.row__main h3 {
+    font-size: var(--step-2);
+}
+
+.row__main h3 a {
+    text-decoration: none;
+}
+
+.row__main h3 a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+}
+
+.row__org {
+    color: var(--silver);
+}
+
+.row__main p,
+.row__main li {
+    font-size: 0.9375rem;
+    color: var(--silver);
+}
+
+.row__main ul:not(.tags) {
+    display: grid;
+    gap: 6px;
+}
+
+.row__main ul:not(.tags) li {
+    position: relative;
+    padding-left: 1.2em;
+}
+
+.row__main ul:not(.tags) li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.8em;
+    width: 0.6em;
+    height: 1px;
+    background: var(--dim);
+}
+
+/* ── Card grid ─────────────────────────────────────────────────────────── */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+    max-width: 78rem;
+    padding-right: var(--gutter);
+}
+
+.card {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 22px 22px 24px;
+    text-decoration: none;
+}
+
+a.card:hover {
+    border-color: var(--glass-line-strong);
+    background: var(--glass-fill-strong);
+}
+
+.card__kind {
+    font-size: var(--step--1);
+    color: var(--dim);
+}
+
+.card h3,
+.card__title {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.card p {
+    font-size: 0.9375rem;
+    color: var(--silver);
+}
+
+.card__price {
+    margin-top: 6px;
+    font-size: var(--step--1);
+    color: var(--white);
+}
+
+.detail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 24px 32px;
+    max-width: 62rem;
+    margin-right: var(--gutter);
+    padding: 26px;
+}
+
+.detail h3 {
+    margin-bottom: 8px;
+    font-family: var(--font-ui);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--dim);
+}
+
+.detail ul {
+    display: grid;
+    gap: 4px;
+}
+
+.detail li {
+    font-size: 0.9375rem;
+    color: var(--silver);
+}
+
+.section > .actions,
+.section > .prose + .actions {
+    margin-top: 28px;
+}
+
+.offer__why,
+.contact__notes {
+    margin-top: 56px;
+}
+
+/* ── Rivr projections (rows rendered by rivr-projections.js) ───────────── */
 
 .projection-list {
-    border-top: 1px solid rgba(255,255,255,0.1);
+    max-width: 78rem;
+    margin-right: var(--gutter);
+    border-top: 1px solid var(--glass-line);
 }
 
 .projection-item {
     display: grid;
-    grid-template-columns: minmax(7rem, .7fr) 2fr auto;
-    gap: 2rem;
+    grid-template-columns: 11rem minmax(0, 1fr) auto;
+    gap: 8px 32px;
     align-items: baseline;
-    padding: 2rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.projection-item h3,
-.projection-item p {
-    margin: 0;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--glass-line);
 }
 
 .projection-item h3 {
-    font-family: var(--font-body);
-    font-style: normal;
-    font-weight: 300;
+    font-size: var(--step-2);
+}
+
+.projection-item p {
+    margin-top: 6px;
+    font-size: 0.9375rem;
+    color: var(--silver);
 }
 
 .projection-meta,
 .projection-link,
 .projection-status {
-    font-size: .78rem;
-    letter-spacing: .08em;
+    font-size: var(--step--1);
+    color: var(--dim);
+}
+
+.projection-meta::first-letter {
     text-transform: uppercase;
-    color: var(--text-secondary);
 }
 
 .projection-link {
     white-space: nowrap;
+    color: var(--silver);
+    text-underline-offset: 0.2em;
 }
 
-/* Footer */
-footer {
-    padding: 6rem 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
+.projection-link:hover {
+    color: var(--white);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .nav-menu {
+.projection-status {
+    padding: 22px 0;
+}
+
+/* ── Contact + footer ──────────────────────────────────────────────────── */
+
+.contact {
+    display: grid;
+    gap: 18px;
+    max-width: 52rem;
+    padding: clamp(26px, 4vw, 44px);
+    margin-right: var(--gutter);
+}
+
+.contact__email {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+    text-decoration-color: var(--glass-line-strong);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+}
+
+.contact__email:hover {
+    text-decoration-color: var(--white);
+}
+
+.contact p {
+    max-width: var(--measure);
+    color: var(--silver);
+}
+
+.foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 40px;
+    margin-top: var(--section-gap);
+    padding: 28px var(--gutter) 40px 0;
+    border-top: 1px solid var(--glass-line);
+    font-size: var(--step--1);
+    color: var(--dim);
+}
+
+.foot ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+}
+
+.foot a {
+    color: var(--silver);
+    text-decoration: none;
+}
+
+.foot a:hover {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+/* ── Narrow screens: sidebar becomes a top brand and a glass bottom dock ── */
+
+@media (max-width: 960px) {
+    :root {
+        --strip-height: 380px;
+    }
+
+    html {
+        scroll-padding-top: 16px;
+    }
+
+    /* No stacking context here, or the dock inside would sit beneath the page's glass. */
+    .side {
+        position: static;
+        isolation: auto;
+        width: auto;
+        padding: 22px var(--gutter) 0;
+        border: 0;
+        background: none;
+        overflow: visible;
+    }
+
+    .side::before,
+    .side::after {
+        content: none;
+    }
+
+    .brand {
+        padding: 0;
+    }
+
+    .nav {
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        bottom: calc(10px + env(safe-area-inset-bottom));
+        z-index: var(--chrome-layer);
+        display: flex;
+        justify-content: space-between;
+        gap: 2px;
+        min-height: var(--dock-height);
+        padding: 6px;
+        border: 1px solid var(--glass-line);
+        border-radius: var(--radius-xl);
+        background: var(--chrome-fill);
+        -webkit-backdrop-filter: blur(var(--chrome-blur)) saturate(var(--chrome-saturate));
+        backdrop-filter: blur(var(--chrome-blur)) saturate(var(--chrome-saturate));
+    }
+
+    .nav a {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        padding: 6px 2px;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+
+    .nav .nav__extra,
+    .spy,
+    .side__foot {
         display: none;
     }
-    
-    .editorial-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
+
+    .page {
+        margin-left: 0;
+        padding-bottom: calc(var(--dock-height) + 28px);
     }
 
-    .projection-heading,
+    /* Narrow panels hold the same words in less width, so they grow instead of clipping. */
+    .panel {
+        height: auto;
+        min-height: var(--strip-height);
+    }
+
+    .hero {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: 0;
+        padding-top: 56px;
+    }
+
+    .hero__portrait {
+        max-width: 340px;
+    }
+
+    .case__body {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .row,
     .projection-item {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: minmax(0, 1fr);
     }
-    
-    h1 {
-        font-size: 15vw;
+
+    .flow {
+        grid-template-columns: minmax(0, 1fr);
     }
-    
-    .work-item a {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
+
+    .flow__arrow {
+        width: 1px;
+        height: 18px;
+        margin: 0 auto;
+    }
+
+    .flow__arrow::after {
+        right: -3px;
+        top: auto;
+        bottom: 0;
+        transform: rotate(135deg);
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        font-size: 16px;
+    }
+
+    .strip__hint {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .strip__track {
+        scroll-behavior: auto;
     }
 }

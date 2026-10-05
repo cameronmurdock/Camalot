@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Cameron Ely-Murdock — Web, SEO &amp; Systems Work</title>
+    <meta name="description" content="Selected work by Cameron Ely-Murdock: the Denver Contact Improv website and its technical SEO, the Rivr platform, a social post planner, a credential protocol, and systems integration.">
+    <link rel="canonical" href="https://camalot.me/portfolio">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cameron Ely-Murdock">
+    <meta property="og:title" content="Portfolio — Cameron Ely-Murdock">
+    <meta property="og:description" content="Websites, technical SEO, integrations and a federated platform, with the methods behind them.">
+    <meta property="og:url" content="https://camalot.me/portfolio">
+    <meta property="og:image" content="https://s3.camalot.me/rivr-uploads/uploads/1790793019482-ipgki55sr5j-dci-home.webp">
+    <meta property="og:image:alt" content="The Denver Contact Improv homepage">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-size='42' fill='%23f4f6f8'%3EC%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&amp;family=Inter:wght@400;500;600&amp;display=swap">
+    <link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://camalot.me/" },
+                    { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://camalot.me/portfolio" }
+                ]
+            },
+            {
+                "@type": "CollectionPage",
+                "@id": "https://camalot.me/portfolio#page",
+                "url": "https://camalot.me/portfolio",
+                "name": "Portfolio — Cameron Ely-Murdock",
+                "isPartOf": { "@id": "https://camalot.me/#website" },
+                "author": { "@id": "https://camalot.me/#person" },
+                "hasPart": [
+                    {
+                        "@type": "WebSite",
+                        "name": "Denver Contact Improv",
+                        "url": "https://denvercontactimprov.com/",
+                        "description": "Website, technical SEO and client-run editing for a Contact Improvisation community in Denver.",
+                        "creator": { "@id": "https://camalot.me/#person" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Rivr",
+                        "url": "https://rivr.social/",
+                        "applicationCategory": "SocialNetworkingApplication",
+                        "operatingSystem": "Web",
+                        "description": "A federated social coordination platform and its landing site.",
+                        "creator": { "@id": "https://camalot.me/#person" }
+                    },
+                    {
+                        "@type": "CreativeWork",
+                        "name": "Social post planner",
+                        "description": "Post design, scheduling and exactly-once delivery to social platforms, built into Rivr.",
+                        "creator": { "@id": "https://camalot.me/#person" }
+                    },
+                    {
+                        "@type": "CreativeWork",
+                        "name": "Credential and account ownership protocol",
+                        "description": "How client accounts and secrets are set up, scoped and handed over.",
+                        "creator": { "@id": "https://camalot.me/#person" }
+                    },
+                    {
+                        "@type": "CreativeWork",
+                        "name": "The Riverside systems integration",
+                        "url": "https://oneapp.gratis/",
+                        "description": "Cloudflare Workers, webhooks and admin API connections joining point of sale, bookings and scheduling into one record.",
+                        "creator": { "@id": "https://camalot.me/#person" }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="fog" aria-hidden="true"></div>
+    <header class="side glass glass--chrome">
+        <a class="brand" href="../index.html">
+            <span class="brand__mark">Cameron Ely-Murdock</span>
+            <span class="brand__name">Systems designer, Boulder</span>
+        </a>
+        <nav class="nav" aria-label="Site">
+            <a href="../index.html">Home</a>
+            <a href="../portfolio" aria-current="page">Portfolio</a>
+            <div class="spy" data-spy>
+                <a href="#dci">Denver Contact Improv</a>
+                <a href="#rivr">Rivr</a>
+                <a href="#planner">Post planner</a>
+                <a href="#ownership">Ownership protocol</a>
+                <a href="#riverside">The Riverside</a>
+                <a href="#seo">Search methods</a>
+                <a href="#experience">Experience</a>
+                <a href="#kat">Visual design</a>
+            </div>
+            <a href="../rivr-social.html">Rivr</a>
+            <a href="../offerings.html">Offerings</a>
+            <a class="nav__extra" href="../writing.html">Writing</a>
+            <a class="nav__extra" href="../about.html">About</a>
+            <a href="../contact.html">Contact</a>
+        </nav>
+        <div class="side__foot">
+            <div class="icons">
+                <a class="icon-btn glass" href="https://github.com/cameronmurdock" rel="me noopener" aria-label="Cameron on GitHub"><span class="icon icon--github" aria-hidden="true"></span></a>
+                <a class="icon-btn glass" href="https://www.linkedin.com/in/cameron-murdock-a997a117" rel="me noopener" aria-label="Cameron on LinkedIn"><span class="icon icon--linkedin" aria-hidden="true"></span></a>
+                <a class="icon-btn glass" href="mailto:murdock.cameron@gmail.com" aria-label="Email Cameron"><span class="icon icon--mail" aria-hidden="true"></span></a>
+            </div>
+            <p class="side__place">Boulder, Colorado</p>
+        </div>
+    </header>
+
+    <main id="main" class="page">
+        <section class="hero hero--page" aria-labelledby="page-title">
+            <div class="hero__text">
+                <p class="role">Websites, search, integrations and a platform</p>
+                <h1 id="page-title">Portfolio</h1>
+                <p class="lede">I come from operations, so the software gets built around how the work actually runs. Each strip below scrolls sideways.</p>
+                <div class="actions">
+                    <a class="btn btn--solid" href="https://github.com/cameronmurdock" rel="me noopener">Code on GitHub</a>
+                    <a class="btn glass" href="https://www.linkedin.com/in/cameron-murdock-a997a117" rel="me noopener">LinkedIn</a>
+                    <a class="btn glass" href="mailto:murdock.cameron@gmail.com">Email me</a>
+                </div>
+            </div>
+        </section>
+
+        <article class="case" id="dci" aria-labelledby="dci-title">
+            <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Denver Contact Improv screens, scrolls sideways">
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">denvercontactimprov.com</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019482-ipgki55sr5j-dci-home.webp" width="1280" height="800" alt="Denver Contact Improv homepage: a circle of dancers behind a frosted card with the site name and an Explore Events button" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">denvercontactimprov.com/events</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019279-al8kzykera5-dci-events.webp" width="1280" height="800" alt="Events page with the featured Art of Living class series, its dates, times and pricing" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel panel--tall glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">On a phone</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019576-klhgzdiphg7-dci-mobile.webp" width="390" height="844" alt="The Denver Contact Improv homepage at phone width" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>What a search engine reads on every page</h4>
+                            <pre><code>{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Denver Contact Improv",
+  "url": "https://denvercontactimprov.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Denver",
+    "addressRegion": "CO",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Denver"
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">denvercontactimprov.com/blog/what-is-contact-improvisation</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019130-9m6da6yrqlr-dci-blog.webp" width="1280" height="800" alt="Blog article titled What is Contact Improvisation? A Beginner's Guide to Contact Improv in Denver" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">denvercontactimprov.com/faq</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019386-quhih9l3ra-dci-faq.webp" width="1280" height="800" alt="Frequently Asked Questions page with answers about Contact Improvisation and what happens at a jam" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>The client edits by chat</h4>
+                            <p>Sovereign Builder is a private, password-protected chat I built for this client.</p>
+                            <ol>
+                                <li>He asks for a change in plain words and attaches photos.</li>
+                                <li>An assistant edits the site's repository and builds a preview on a staging host.</li>
+                                <li>Nothing goes live until he says “deploy it”.</li>
+                                <li>A separate, signed deploy step publishes. The assistant cannot reach secrets, DNS or the shell.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">artoflivingci.com</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019004-nm0ld6iuxul-aol-home.webp" width="1280" height="800" alt="Art of Living CI homepage, the sister site, with two dancers laughing behind the title card" loading="lazy" draggable="false"></div>
+                    </figure>
+                </div>
+            </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="dci-title">Denver Contact Improv</h2>
+                    <p class="case__kind">Website, technical SEO and client-run editing</p>
+                    <p>Michael Bernal teaches Contact Improvisation in Denver. I designed and built his site and its sister site, Art of Living CI: ten pages, a page for each class series, a beginner’s guide, and an FAQ in his own words. Both are static Next.js exports, so they load from a CDN with no server to maintain.</p>
+                    <p>The search work is on every page rather than bolted on: titles and descriptions written from the phrases people type, canonical URLs, structured data for the business, the FAQ and the guide, a sitemap, and sharing cards. The sister site points its canonicals at the main domain so the two never compete. The full list is under <a class="text-link" href="#seo">search methods</a>.</p>
+                    <p>Michael updates the site himself through a private chat I built for him. He previews every change on a staging host, and nothing reaches production until he asks for it.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>Client</dt><dd>Michael Bernal, Denver Contact Improv</dd></div>
+                    <div><dt>My part</dt><dd>Design, build, search, hosting and handoff</dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Tailwind 4</li><li>GitHub Pages</li><li>Claude Code</li></ul></dd></div>
+                    <div><dt>Live</dt><dd><a href="https://denvercontactimprov.com/" rel="noopener">denvercontactimprov.com</a><br><a href="https://artoflivingci.com/" rel="noopener">artoflivingci.com</a></dd></div>
+                </dl>
+            </div>
+        </article>
+
+        <article class="case" id="rivr" aria-labelledby="rivr-title">
+            <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Rivr screens, scrolls sideways">
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">rivr.social</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020281-5bia383klfn-rivr-landing.webp" width="1280" height="800" alt="Rivr landing page over dark water: A new social coordination network to flow local and connect global" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">app.rivr.social</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020028-rl5zoh2zfei-rivr-app.webp" width="1280" height="552" alt="Rivr hub dashboard: a glass sidebar beside a Global Hub panel with weather, listings and feed widgets" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">The map</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020376-07tx9917kkzh-rivr-map.webp" width="1280" height="800" alt="Rivr map view: a globe with group cards for a tool library, a garden crew and a commons" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel glass">
+                        <div class="spec">
+                            <h4>How it is put together</h4>
+                            <div class="flow">
+                                <div class="flow__col">
+                                    <div class="flow__node">Person instance<small>one person’s own data</small></div>
+                                    <div class="flow__node">Group instance<small>governance, treasury, payroll</small></div>
+                                </div>
+                                <div class="flow__arrow" aria-hidden="true"></div>
+                                <div class="flow__col">
+                                    <div class="flow__node">Signed event rail<small>Ed25519, peer to peer</small></div>
+                                    <div class="flow__node">Single sign-on<small>the hub vouches for identity</small></div>
+                                </div>
+                                <div class="flow__arrow" aria-hidden="true"></div>
+                                <div class="flow__col">
+                                    <div class="flow__node">Hub<small>map, feed, marketplace, discovery</small></div>
+                                    <div class="flow__node">Assistant<small>about 118 tools over MCP</small></div>
+                                </div>
+                            </div>
+                            <p>Every object is an agent, a resource or a ledger entry, so the same model carries an event, a job, a payment and a vote.</p>
+                        </div>
+                    </div>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">rivr.camalot.me/profile/cameron</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020478-y00sjyrrlo-rivr-person.webp" width="1280" height="800" alt="Cameron's profile on his own sovereign Rivr instance, with a cover image, stats and tabs for posts, events and offerings" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">In a headset</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020635-hebf0jaksau-rivr-xr.webp" width="1280" height="800" alt="Rivr in extended reality: hands reaching toward floating menus above photoreal terrain of Boulder" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">rivr.social/features</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020190-5qf5w3xwpfv-rivr-features.webp" width="1280" height="800" alt="Rivr features page: Technology that returns us to connection and life, over a photo of a gathering by a pond" loading="lazy" draggable="false"></div>
+                    </figure>
+                </div>
+            </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="rivr-title">Rivr</h2>
+                    <p class="case__kind">A federated coordination platform, and the site that explains it</p>
+                    <p>Rivr is a social coordination network: events, groups, offerings, jobs and a shared map, with governance and a treasury for the groups that need them. I lead its technology, product and infrastructure.</p>
+                    <p>It is federated. A hub connects sovereign person and group instances that keep their own data, and peers trade signed events instead of trusting one central database. An assistant inside the app works through the same permissions as the person it acts for.</p>
+                    <p>The landing site at rivr.social is static HTML that I ported from Squarespace and serve from the same infrastructure. This site is published from my own Rivr instance, which is why the homepage can list live objects from it.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>My part</dt><dd>Technology, product and infrastructure</dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>Next.js 15</li><li>React 19</li><li>TypeScript</li><li>PostgreSQL</li><li>Drizzle</li><li>Stripe</li><li>Matrix</li><li>LiveKit</li><li>Expo</li><li>Docker</li></ul></dd></div>
+                    <div><dt>Live</dt><dd><a href="https://rivr.social/" rel="noopener">rivr.social</a><br><a href="https://app.rivr.social/" rel="noopener">app.rivr.social</a><br><a href="https://rivr.camalot.me/profile/cameron" rel="me noopener">My instance</a></dd></div>
+                    <div><dt>More</dt><dd><a href="../rivr-social.html">Why Rivr is built for use, not feeds</a></dd></div>
+                </dl>
+            </div>
+        </article>
+
+        <article class="case" id="planner" aria-labelledby="planner-title">
+            <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Social post planner, scrolls sideways">
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">app.rivr.social/broadcast/planner</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790806472213-nqilsfzl85p-planner-grid.webp" width="1180" height="740" alt="The feed grid in Rivr: six scheduled posts laid out as profile squares beside a September calendar" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>The crop the platform will actually use</h4>
+                            <p>Instagram crops twice. A feed picture is first cut to fit between 4:5 and 1.91:1, then the profile grid shows a centred square of that.</p>
+                            <p>The planner computes both crops the way Instagram does and renders the photo through them, so a subject that will be cut in half looks cut in half before it is posted.</p>
+                        </div>
+                    </div>
+                    <div class="panel glass">
+                        <div class="spec">
+                            <h4>From a photo to every channel</h4>
+                            <div class="flow">
+                                <div class="flow__col">
+                                    <div class="flow__node">Photo and caption<small>the raw material</small></div>
+                                    <div class="flow__node">A chosen time<small>nothing posts without one</small></div>
+                                </div>
+                                <div class="flow__arrow" aria-hidden="true"></div>
+                                <div class="flow__col">
+                                    <div class="flow__node">Planner<small>crop, grid, calendar</small></div>
+                                    <div class="flow__node">Publishing run<small>claims, then delivers</small></div>
+                                </div>
+                                <div class="flow__arrow" aria-hidden="true"></div>
+                                <div class="flow__col">
+                                    <div class="flow__node">Instagram and Facebook</div>
+                                    <div class="flow__node">Telegram, Discord, Slack</div>
+                                    <div class="flow__node">Rivr feed and newsletter</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>A post goes out once</h4>
+                            <ol>
+                                <li>Claim before delivering. Two runs racing means one wins the write, so one delivers.</li>
+                                <li>A claim that never came back is never retried. It waits for a person to check.</li>
+                                <li>Every delivery carries a key that stays the same for the life of the post, so the platform can refuse a repeat too.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>The order is the schedule</h4>
+                            <p>Live and planned posts share one grid, newest first, exactly as a profile lays them out.</p>
+                            <p>Dragging a square moves the post between time slots and leaves the slots alone. “One a day at nine” stays one a day at nine however often the plan is rearranged.</p>
+                        </div>
+                    </div>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">The planner page</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790806471757-w480tkhhabd-planner.webp" width="1280" height="800" alt="The full feed planner page: who to plan as, the grid, calendar, reels and stories, and the compose form" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">Compose and destinations</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790806472396-vdw1phg6oq-planner-compose.webp" width="1180" height="700" alt="Compose form with a date and time, picture picker and the list of places a post can go, each marked ready or needing a key" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">app.rivr.social/broadcast</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790806472621-ux1z2xo15uk-broadcast.webp" width="1280" height="800" alt="The Broadcast page: choose who to broadcast as, the feed planner summary, compose a post, press sources, newsletters and an email blast" loading="lazy" draggable="false"></div>
+                    </figure>
+                </div>
+            </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="planner-title">Social post planner</h2>
+                    <p class="case__kind">Post design, scheduling and delivery, automated</p>
+                    <p>A planner for whoever runs a group’s social accounts. A post starts as a photo and a caption; the planner shows where it will sit on the profile and how the platform will frame it, because a grid that lies about framing is worse than no grid.</p>
+                    <p>Once a time is set, a publishing run delivers the post to each destination and records what happened per channel. A post can land on one platform and fail on another, and the person sees which, along with whether the fix is a new token or a different post.</p>
+                    <p>Each account is reached with a token its owner pastes in. Tokens are encrypted at rest, checked against the platform the moment they are saved, and never written to a log or an error message.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>My part</dt><dd>Design and build, inside Rivr</dd></div>
+                    <div><dt>Delivers to</dt><dd><ul class="tags"><li>Instagram feed, reels, stories</li><li>Facebook pages</li><li>Telegram</li><li>Discord</li><li>Slack</li><li>Rivr feed</li><li>Member newsletter</li></ul></dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>TypeScript</li><li>Meta Graph API</li><li>PostgreSQL</li><li>Next.js</li></ul></dd></div>
+                </dl>
+            </div>
+        </article>
+
+        <article class="case" id="ownership" aria-labelledby="ownership-title">
+            <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Credential and ownership protocol, scrolls sideways">
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>Secrets never enter the repository</h4>
+                            <pre><code>secrets.local/        # git-ignored
+  server.env
+  oracle-ssh.pem
+  cloudflare-api-token
+  oci/
+    config
+    oci_api_key.pem
+
+chmod 700 secrets.local
+chmod 600 secrets.local/*</code></pre>
+                            <p>Anything pasted into a chat, an issue or a commit is treated as leaked and rotated.</p>
+                        </div>
+                    </div>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>Each key opens one door</h4>
+                            <ul>
+                                <li>A DNS token limited to editing records on the client’s two zones, never the account-wide key.</li>
+                                <li>A dedicated cloud user with a narrow policy, not an administrator’s key.</li>
+                                <li>SSH limited to the administrator’s address; only web ports face the internet.</li>
+                                <li>The editing assistant has no shell, no secrets and no deploy rights. Deploys are a separate, signed step.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel glass">
+                        <div class="spec">
+                            <h4>Handing the keys over</h4>
+                            <ol>
+                                <li>Keep the repository free of secrets.</li>
+                                <li>Send the secrets folder through a password manager or an encrypted archive, with the password on a different channel.</li>
+                                <li>Move the cloud tenancy, registrar, DNS zones, code repositories and AI subscription into accounts the client controls.</li>
+                                <li>Issue fresh credentials under the client’s ownership.</li>
+                                <li>Swap them into the running service and confirm it is healthy.</li>
+                                <li>Only then revoke my old tokens.</li>
+                                <li>Delete every unencrypted transfer copy.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>Moving DNS without an outage</h4>
+                            <ul>
+                                <li>Copy every existing record first: mail, verification, DKIM and DMARC included.</li>
+                                <li>Keep web records unproxied until the new origin serves TLS.</li>
+                                <li>Add staging hosts as new records instead of changing live ones.</li>
+                                <li>Leave a domain where it is until its email forwarding is documented and reproduced.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>If something leaks</h4>
+                            <ol>
+                                <li>Stop the worker and the container.</li>
+                                <li>Rotate the affected credential.</li>
+                                <li>Read the cloud cost and audit logs, the repository history and the DNS audit log.</li>
+                                <li>Preserve the logs, then restore service.</li>
+                            </ol>
+                            <p>A one-dollar budget with alerts at one cent catches a runaway bill before it is a bill.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="ownership-title">Credentials and account ownership</h2>
+                    <p class="case__kind">A written protocol for who holds the keys</p>
+                    <p>A small site still touches a registrar, DNS, a host, a code repository and usually an AI subscription. If those sit in the developer’s accounts, the client does not own their own website. I write down who owns each one and how it reaches the client before anything is deployed.</p>
+                    <p>The protocol covers where secrets live, how narrowly each credential is scoped, how DNS moves without breaking mail, what to do when something leaks, and the order of the final handoff. The order matters: new credentials are proven to work before the old ones are revoked.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>Used on</dt><dd>Denver Contact Improv and Art of Living CI</dd></div>
+                    <div><dt>Covers</dt><dd><ul class="tags"><li>Domain registrar</li><li>Cloudflare DNS</li><li>Oracle Cloud</li><li>GitHub</li><li>SSH</li><li>AI subscription</li></ul></dd></div>
+                    <div><dt>Principle</dt><dd>The client owns every account. I hold access only while I am working.</dd></div>
+                </dl>
+            </div>
+        </article>
+
+        <article class="case" id="riverside" aria-labelledby="riverside-title">
+            <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="The Riverside systems, scrolls sideways">
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">oneapp.gratis</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019829-c573ibg1774-riverside-events.webp" width="1280" height="800" alt="Riverside Events: a grid of upcoming event cards, each with an image, a description and a View Details button" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel glass">
+                        <div class="spec">
+                            <h4>One record instead of five logins</h4>
+                            <div class="flow">
+                                <div class="flow__col">
+                                    <div class="flow__node">Clover<small>point of sale</small></div>
+                                    <div class="flow__node">Tripleseat<small>venue bookings</small></div>
+                                    <div class="flow__node">Connecteam<small>shifts, tasks, time</small></div>
+                                    <div class="flow__node">Stripe<small>ticket checkout</small></div>
+                                </div>
+                                <div class="flow__arrow" aria-hidden="true"></div>
+                                <div class="flow__col">
+                                    <div class="flow__node">Cloudflare Workers<small>webhooks in, answered at once, processed in the background</small></div>
+                                    <div class="flow__node">Sync scripts<small>admin APIs, matched on external IDs</small></div>
+                                </div>
+                                <div class="flow__arrow" aria-hidden="true"></div>
+                                <div class="flow__col">
+                                    <div class="flow__node">Notion<small>events, people, revenue, shifts, tasks, products</small></div>
+                                    <div class="flow__node">Public events site<small>built from the same record</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <h4>Tickets without a ticketing vendor</h4>
+                            <ul>
+                                <li>Each event page lists its tickets from the products database.</li>
+                                <li>The Worker finds or creates the matching Stripe product, price and payment link.</li>
+                                <li>A completed checkout writes a revenue record against the event.</li>
+                                <li>The guestbook links each visitor to the events they attended, with their contact preference.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel panel--narrow glass">
+                        <div class="spec">
+                            <p class="spec__figure">77</p>
+                            <h4>tools across three MCP servers</h4>
+                            <p>I wrote Model Context Protocol servers for Clover, Tripleseat and Connecteam, so an assistant can answer “last week’s sales by employee” or “what is booked next week” straight from the admin APIs.</p>
+                        </div>
+                    </div>
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">Rivertree</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793019926-4ridt54jl59-rivertree-tasks.webp" width="1280" height="720" alt="Rivertree task list: completed venue tasks with effort, importance and point values" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel panel--tall glass">
+                        <div class="slot">
+                            <p class="slot__kind">Social posts</p>
+                            <p class="slot__note">Artwork to come: event promotion for The Riverside and The Coffee Stand.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="riverside-title">The Riverside</h2>
+                    <p class="case__kind">Systems integration, admin APIs and the front ends on top</p>
+                    <p>The Riverside is an events venue in Boulder. Over four years there I integrated point-of-sale, payroll, shift management, product production and venue booking into one connected operational system, replacing disconnected manual tracking.</p>
+                    <p>The backbone is a set of Cloudflare Workers on one domain. Webhooks from the booking and scheduling tools land in the shared record within seconds. A public events site builds itself from that record, sells tickets through Stripe, and writes each sale and guestbook entry back against the event.</p>
+                    <p>On top of the data sit the pieces people touch: the events pages, a guestbook, a shift checklist for staff, and Rivertree, an app that turned the venue’s points-for-tasks model into software.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>My part</dt><dd>Operations and systems integration, 2022 to January 2026</dd></div>
+                    <div><dt>Built with</dt><dd><ul class="tags"><li>Cloudflare Workers</li><li>Notion API</li><li>Stripe</li><li>Clover</li><li>Tripleseat</li><li>Connecteam</li><li>MCP</li><li>TypeScript</li><li>Python</li><li>Next.js</li><li>Supabase</li></ul></dd></div>
+                    <div><dt>Live sites and source</dt><dd><a href="https://boulderriverside.com/" rel="noopener">The Riverside venue</a><br><a href="https://oneapp.gratis/" rel="noopener">Riverside Events</a><br><a href="https://github.com/cameronmurdock/rivertree-platform" rel="noopener">Rivertree on GitHub</a></dd></div>
+                </dl>
+            </div>
+        </article>
+
+        <article class="case" id="oneboulder" aria-labelledby="oneboulder-title">
+            <div class="case__body">
+                <div class="case__text">
+                    <h2 id="oneboulder-title">OneBoulder</h2>
+                    <p class="case__kind">Community app and local coordination</p>
+                    <p>OneBoulder brought profiles, events, local discovery and participation into one place for the Boulder community. My work on the app and its supporting systems shaped how people could find each other and organize around shared activity.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>Work</dt><dd>Community app, web experience and supporting systems</dd></div>
+                    <div><dt>Focus</dt><dd>People, events, chapters and local participation</dd></div>
+                </dl>
+            </div>
+        </article>
+
+        <section class="section" id="seo" aria-labelledby="seo-title">
+            <div class="wrap section__head">
+                <h2 id="seo-title">Search methods</h2>
+                <p>What I do to a site so that search engines and people can find it. The examples are from Denver Contact Improv, where each of these is live.</p>
+            </div>
+            <div class="rows">
+                <div class="row">
+                    <p class="row__meta">Titles and descriptions</p>
+                    <div class="row__main">
+                        <h3>Write each page for the phrase people type</h3>
+                        <p>Every page has its own title and description built from a real search, in the visitor’s words. The jam page is titled “Contact Improv Jam — Weekly Contact Improvisation Jam in Denver”, not “Jam”. One template keeps the brand on every title without repeating it by hand.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Structured data</p>
+                    <div class="row__main">
+                        <h3>Tell the crawler what the page is</h3>
+                        <p>JSON-LD on every page type: LocalBusiness and WebSite across the site, FAQPage on the questions page so answers can appear in results, and Article with a named author on the guide.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Local search</p>
+                    <div class="row__main">
+                        <h3>Say where, everywhere it counts</h3>
+                        <p>The city is in the business markup as an address and a service area, in the headings, and in the copy: a homepage section is titled “Contact Improvisation Classes in Denver”. The contact page asks for a Google review, and every social link points at one handle so the profiles agree.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Canonicals and duplicates</p>
+                    <div class="row__main">
+                        <h3>One address per page, one site per topic</h3>
+                        <p>Each page declares its canonical URL. The sister site shares most of its content, so its pages name the main domain as canonical and ranking consolidates there. A commonly mistyped address redirects to the right page and is marked not to be indexed.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Crawling</p>
+                    <div class="row__main">
+                        <h3>Hand over the map</h3>
+                        <p>A sitemap lists every page with its priority and how often it changes, robots.txt points to it, and the robots directives allow large image previews and full-length snippets.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Content</p>
+                    <div class="row__main">
+                        <h3>Answer the question before the class does</h3>
+                        <p>A long beginner’s guide, “What is Contact Improvisation?”, and an FAQ in the teacher’s own words give a newcomer’s search somewhere to land, and link on to the classes.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Sharing</p>
+                    <div class="row__main">
+                        <h3>Make the link look right when it is shared</h3>
+                        <p>Open Graph and large-image cards on every page, with a described image, so a link pasted into a message shows a photo and a sentence instead of a bare URL.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Accessibility and speed</p>
+                    <div class="row__main">
+                        <h3>Describe every image, ship static files</h3>
+                        <p>Every image carries alt text that says what is in it. Pages are pre-rendered and served from a CDN, and fonts are bundled with the build instead of fetched from a third party.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">On this site</p>
+                    <div class="row__main">
+                        <h3>The same methods, applied here</h3>
+                        <p>Person, ProfilePage and breadcrumb markup, one heading per page, canonical URLs, a sitemap, described images under 100 KB with fixed dimensions so nothing shifts as they load, and no script the page has to wait for.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="experience" aria-labelledby="experience-title">
+            <div class="wrap section__head">
+                <h2 id="experience-title">Experience</h2>
+            </div>
+            <div class="rows">
+                <div class="row">
+                    <p class="row__meta">2023 to present</p>
+                    <div class="row__main">
+                        <h3>Founder and systems architect</h3>
+                        <p class="row__org">Rivr, Boulder</p>
+                        <ul>
+                            <li>Architected a community coordination platform spanning events, jobs, governance, resource sharing and local economic infrastructure.</li>
+                            <li>Built the data models, user flows, system logic and roadmap, then implemented them as a working application.</li>
+                            <li>Designed the relational schema and access rules governing multi-tenant groups, events and financial records.</li>
+                            <li>Integrated Stripe for payments and ticketing, with event financials modelled in the database.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">2022 to January 2026</p>
+                    <div class="row__main">
+                        <h3>Operations and systems integration</h3>
+                        <p class="row__org">The Riverside, Boulder</p>
+                        <ul>
+                            <li>Integrated point-of-sale, payroll, shift management, product production and venue booking into one connected operational system.</li>
+                            <li>Designed the data flow between systems so staffing, sales, production and bookings reconciled against each other.</li>
+                            <li>Helped manage day-to-day bookkeeping: income, expenses, payments, invoices, costs and budgets.</li>
+                            <li>Served as the coordination point between organizers, staff, partners and vendors.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">2021 to present</p>
+                    <div class="row__main">
+                        <h3>Independent consultant</h3>
+                        <p class="row__org">Strategy, structure and systems for small organizations</p>
+                        <ul>
+                            <li>Advised on operational structure, systems design and technology selection.</li>
+                            <li>Translated fragmented processes into documented, repeatable workflows.</li>
+                            <li>Built and maintained client websites, with search work and handoff included.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">2013 to 2020</p>
+                    <div class="row__main">
+                        <h3>Agricultural operations and cooperative founding</h3>
+                        <p class="row__org">Earthbridge Hemp Cooperative, Septaria Ranch, Liberty Angel Hemp and others</p>
+                        <p>Seven years running greenhouse, ranch and production operations and founding a cooperative, which is where the habit of building systems around real work comes from.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Education</p>
+                    <div class="row__main">
+                        <h3>Bachelor of Arts, Anthropology</h3>
+                        <p class="row__org">University of Colorado Boulder</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p class="row__meta">Tools</p>
+                    <div class="row__main">
+                        <h3>What I work in</h3>
+                        <ul class="tags">
+                            <li>TypeScript</li><li>JavaScript</li><li>SQL</li><li>Python</li><li>HTML and CSS</li><li>React</li><li>Next.js</li><li>Tailwind CSS</li><li>Node.js</li><li>PostgreSQL</li><li>Supabase</li><li>Row-level security</li><li>REST APIs</li><li>Webhooks</li><li>Cloudflare Workers</li><li>Stripe</li><li>Notion</li><li>Airtable</li><li>Google Workspace</li><li>Docker</li><li>Git</li><li>MCP servers</li><li>Technical SEO</li>
+                        </ul>
+                        <p><a class="text-link" href="https://github.com/cameronmurdock" rel="me noopener">github.com/cameronmurdock</a> has the public code. <a class="text-link" href="https://www.linkedin.com/in/cameron-murdock-a997a117" rel="me noopener">LinkedIn</a> has the full history.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="kat" aria-labelledby="kat-title">
+            <div class="wrap section__head">
+                <h2 id="kat-title">Visual design by Kathleen Marie Rose</h2>
+                <p>Kat is the visual designer I bring in for brand, social and interface work. She leads vision, creative direction and culture at Rivr, and photographs as <a class="text-link" href="https://www.truetoessence.com/" rel="noopener">True to Essence</a>. She sets the look; I build it and automate what repeats.</p>
+            </div>
+            <div class="strip" data-strip>
+                <div class="strip__track" data-strip-track tabindex="0" role="group" aria-label="Visual design by Kathleen Marie Rose, scrolls sideways">
+                    <figure class="panel glass">
+                        <div class="shot__bar"><span class="shot__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="shot__url">Creative direction, rivr.social</span></div>
+                        <div class="shot__view"><img src="https://s3.camalot.me/rivr-uploads/uploads/1790793020281-5bia383klfn-rivr-landing.webp" width="1280" height="800" alt="The Rivr landing page, whose look Kathleen directed: white type over dark water" loading="lazy" draggable="false"></div>
+                    </figure>
+                    <div class="panel panel--tall glass">
+                        <div class="slot">
+                            <p class="slot__kind">Social media posts</p>
+                            <p class="slot__note">Artwork to come: designed posts and campaign sets.</p>
+                        </div>
+                    </div>
+                    <div class="panel panel--tall glass">
+                        <div class="slot">
+                            <p class="slot__kind">Social media posts</p>
+                            <p class="slot__note">Artwork to come: event promotion for The Riverside.</p>
+                        </div>
+                    </div>
+                    <div class="panel glass">
+                        <div class="slot">
+                            <p class="slot__kind">Websites</p>
+                            <p class="slot__note">Artwork to come: sites designed in Squarespace and Adobe Portfolio.</p>
+                        </div>
+                    </div>
+                    <div class="panel glass">
+                        <div class="slot">
+                            <p class="slot__kind">Interface design</p>
+                            <p class="slot__note">Artwork to come: screens and components.</p>
+                        </div>
+                    </div>
+                    <div class="panel panel--square glass">
+                        <div class="slot">
+                            <p class="slot__kind">Brand kits</p>
+                            <p class="slot__note">Artwork to come: type, colour and logo systems built in Canva and Adobe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="case__body">
+                <div class="case__text">
+                    <p class="case__kind">Social media, websites, interfaces and brand kits</p>
+                    <p>A brand kit becomes a set of templates, the templates become scheduled posts, and the person running the account approves instead of assembling. That is the join between her work and mine.</p>
+                </div>
+                <dl class="facts glass">
+                    <div><dt>Works in</dt><dd><ul class="tags"><li>Adobe</li><li>Adobe Portfolio</li><li>Canva</li><li>Squarespace</li><li>Photography</li></ul></dd></div>
+                    <div><dt>Together</dt><dd>Social media management and its automation</dd></div>
+                    <div><dt>Her studio</dt><dd><a href="https://www.truetoessence.com/" rel="noopener">truetoessence.com</a></dd></div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="hire-title">
+            <div class="contact glass">
+                <h2 id="hire-title">Have a site or a system that needs this?</h2>
+                <a class="contact__email" href="mailto:murdock.cameron@gmail.com">murdock.cameron@gmail.com</a>
+                <p>Tell me what you’re running and what’s stuck. The <a class="text-link" href="../offerings.html">offerings page</a> has starting prices.</p>
+            </div>
+        </section>
+
+        <footer class="foot">
+            <p>Cameron Ely-Murdock, Boulder, Colorado.</p>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../rivr-social.html">Rivr</a></li>
+                <li><a href="../offerings.html">Offerings</a></li>
+                <li><a href="../writing.html">Writing</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+                <li><a href="https://github.com/cameronmurdock" rel="me noopener">GitHub</a></li>
+            </ul>
+        </footer>
+    </main>
+
+    <script src="../site.js" defer></script>
+</body>
+</html>
